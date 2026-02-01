@@ -1,0 +1,1 @@
+https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload&prompt=consent&response_type=code&client_id=877144117066-8kintanfocfeujvd5hj9id8cpddud7s7.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Foauth2callback

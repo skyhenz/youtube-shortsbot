@@ -1,29 +1,36 @@
 import fs from 'fs';
 import { google } from 'googleapis';
 import config from '../config/config.js';
+import { sanitizeTitle } from './validation.js';
 
-const OAuth2 = google.auth.OAuth2;
+import AuthManager from './auth_manager.js';
 
-async function getAuthenticatedClient() {
-    const oauth2Client = new OAuth2(
-        config.youtube.clientId,
-        config.youtube.clientSecret,
-        'urn:ietf:wg:oauth:2.0:oob'
-    );
-
-    oauth2Client.setCredentials({
-        refresh_token: config.youtube.refreshToken
-    });
-
-    return oauth2Client;
-}
+const authManager = new AuthManager();
 
 export default async function uploadYoutube(videoFile, scriptData) {
-    const auth = await getAuthenticatedClient();
+    const auth = await authManager.getClient();
     const youtube = google.youtube({ version: 'v3', auth });
 
-    const title = `${scriptData.topic} #Shorts`;
-    const description = `${scriptData.topic}\n\n#shorts #facts #indonesia #viral`;
+    const rawTitle = `${scriptData.topic} #Shorts`;
+    const title = sanitizeTitle(rawTitle);
+
+    // Use selected description variant or fallback
+    const selectedDesc = scriptData.selectedDescription || {
+        summary: scriptData.topic,
+        hashtags: ['#shorts', '#facts', '#indonesia', '#viral']
+    };
+
+    // Use description from script (which might include a placeholder)
+    let description = scriptData.description || selectedDesc.summary;
+    const hashtags = selectedDesc.hashtags ? selectedDesc.hashtags.join(' ') : '#shorts #facts #viral';
+
+    if (description.includes('{{AFFILIATE_LINK}}')) {
+        description = description.replace('{{AFFILIATE_LINK}}', scriptData.selectedAffiliateCopy || '');
+    } else {
+        description = `${description}\n\n${hashtags}\n\n${scriptData.selectedAffiliateCopy || ''}`;
+    }
+
+    description = description.trim();
 
     const tags = [
         'shorts',

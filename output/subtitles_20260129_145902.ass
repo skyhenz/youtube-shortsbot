@@ -1,0 +1,43 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Inter,70,&H00FFFFFF,&H0000FFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,3,2,5,50,50,960,1
+Style: Karaoke,Inter,75,&H00FFFFFF,&H0000FFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,4,0,5,50,50,960,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.10,0:00:01.76,Karaoke,,0,0,0,,{\k45}Apakah {\k25}Anda {\k22}sering {\k23}merasa
+Dialogue: 0,0:00:01.26,0:00:03.11,Karaoke,,0,0,0,,{\k51}kewalahan {\k18}dengan {\k30}daftar {\k35}tugas
+Dialogue: 0,0:00:02.61,0:00:05.51,Karaoke,,0,0,0,,{\k10}yang {\k62}menumpuk {\k61}Rahasianya {\k22}bukan
+Dialogue: 0,0:00:05.01,0:00:07.11,Karaoke,,0,0,0,,{\k35}bekerja {\k20}lebih {\k50}lama {\k25}tapi
+Dialogue: 0,0:00:06.61,0:00:08.27,Karaoke,,0,0,0,,{\k36}bekerja {\k17}lebih {\k41}cerdas {\k21}dengan
+Dialogue: 0,0:00:07.77,0:00:11.21,Karaoke,,0,0,0,,{\k33}Teknik {\k66}Pomodoro {\k33}Caranya {\k75}sederhana
+Dialogue: 0,0:00:10.98,0:00:12.43,Karaoke,,0,0,0,,{\k30}fokus {\k27}penuh {\k17}pada {\k20}satu
+Dialogue: 0,0:00:11.93,0:00:13.36,Karaoke,,0,0,0,,{\k33}tugas {\k26}selama {\k15}dua {\k17}puluh
+Dialogue: 0,0:00:12.86,0:00:14.87,Karaoke,,0,0,0,,{\k16}lima {\k41}menit {\k23}lalu {\k42}istirahat
+Dialogue: 0,0:00:14.37,0:00:16.10,Karaoke,,0,0,0,,{\k32}singkat {\k28}selama {\k18}lima {\k42}menit
+Dialogue: 0,0:00:16.43,0:00:18.13,Karaoke,,0,0,0,,{\k40}Siklus {\k23}ini {\k36}membantu {\k20}otak
+Dialogue: 0,0:00:17.63,0:00:19.19,Karaoke,,0,0,0,,{\k27}Anda {\k25}tetap {\k36}segar {\k17}dan
+Dialogue: 0,0:00:18.69,0:00:21.71,Karaoke,,0,0,0,,{\k41}mencegah {\k37}kelelahan {\k55}mental {\k32}Setelah
+Dialogue: 0,0:00:21.21,0:00:23.39,Karaoke,,0,0,0,,{\k21}empat {\k53}siklus {\k23}ambil {\k45}istirahat
+Dialogue: 0,0:00:22.89,0:00:24.41,Karaoke,,0,0,0,,{\k18}lebih {\k27}lama {\k35}sekitar {\k20}lima
+Dialogue: 0,0:00:23.91,0:00:25.47,Karaoke,,0,0,0,,{\k33}belas {\k31}hingga {\k23}tiga {\k17}puluh
+Dialogue: 0,0:00:24.97,0:00:27.59,Karaoke,,0,0,0,,{\k43}menit {\k25}Dengan {\k31}membagi {\k27}waktu
+Dialogue: 0,0:00:27.10,0:00:29.35,Karaoke,,0,0,0,,{\k30}menjadi {\k33}blok-blok {\k51}kecil {\k30}tugas
+Dialogue: 0,0:00:28.85,0:00:30.39,Karaoke,,0,0,0,,{\k38}raksasa {\k18}akan {\k27}terasa {\k20}lebih
+Dialogue: 0,0:00:29.89,0:00:31.60,Karaoke,,0,0,0,,{\k31}ringan {\k12}dan {\k45}motivasi {\k31}Anda
+Dialogue: 0,0:00:31.10,0:00:32.98,Karaoke,,0,0,0,,{\k26}akan {\k23}tetap {\k45}terjaga {\k43}sepanjang
+Dialogue: 0,0:00:32.48,0:00:35.08,Karaoke,,0,0,0,,{\k45}hari {\k36}Cobalah {\k13}hari {\k31}ini
+Dialogue: 0,0:00:34.58,0:00:36.62,Karaoke,,0,0,0,,{\k15}dan {\k27}lihat {\k43}bagaimana {\k67}produktivitas
+Dialogue: 0,0:00:36.12,0:00:37.76,Karaoke,,0,0,0,,{\k26}Anda {\k32}meningkat {\k31}pesat {\k23}tanpa
+Dialogue: 0,0:00:37.26,0:00:39.11,Karaoke,,0,0,0,,{\k21}rasa {\k32}stres {\k11}yang {\k70}berlebihan
+Dialogue: 0,0:00:39.46,0:00:41.70,Karaoke,,0,0,0,,{\k36}Fokus {\k28}adalah {\k55}kunci {\k25}tapi
+Dialogue: 0,0:00:41.20,0:00:43.33,Karaoke,,0,0,0,,{\k47}istirahat {\k28}adalah {\k23}bahan {\k63}bakarnya
+Dialogue: 0,0:00:43.67,0:00:46.75,Karaoke,,0,0,0,,{\k46}Selamat {\k66}mencoba {\k37}Follow {\k23}agar
+Dialogue: 0,0:00:46.25,0:00:48.22,Karaoke,,0,0,0,,{\k22}tidak {\k42}ketinggalan {\k35}fakta {\k47}psikologi
+Dialogue: 0,0:00:47.72,0:00:48.80,Karaoke,,0,0,0,,{\k57}singkat

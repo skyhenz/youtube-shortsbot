@@ -1,0 +1,100 @@
+{
+  "Metadata": [
+    {
+      "Type": "WordBoundary",
+      "Data": {
+        "Offset": 1000000,
+        "Duration": 5750000,
+        "text": {
+          "Text": "Halo",
+          "Length": 4,
+          "BoundaryType": "WordBoundary"
+        }
+      }
+    },
+    {
+      "Type": "WordBoundary",
+      "Data": {
+        "Offset": 9625000,
+        "Duration": 2375000,
+        "text": {
+          "Text": "ini",
+          "Length": 3,
+          "BoundaryType": "WordBoundary"
+        }
+      }
+    },
+    {
+      "Type": "WordBoundary",
+      "Data": {
+        "Offset": 12000000,
+        "Duration": 2875000,
+        "text": {
+          "Text": "adalah",
+          "Length": 6,
+          "BoundaryType": "WordBoundary"
+        }
+      }
+    },
+    {
+      "Type": "WordBoundary",
+      "Data": {
+        "Offset": 14875000,
+        "Duration": 1625000,
+        "text": {
+          "Text": "tes",
+          "Length": 3,
+          "BoundaryType": "WordBoundary"
+        }
+      }
+    },
+    {
+      "Type": "WordBoundary",
+      "Data": {
+        "Offset": 16500000,
+        "Duration": 2875000,
+        "text": {
+          "Text": "suara",
+          "Length": 5,
+          "BoundaryType": "WordBoundary"
+        }
+      }
+    },
+    {
+      "Type": "WordBoundary",
+      "Data": {
+        "Offset": 19375000,
+        "Duration": 2125000,
+        "text": {
+          "Text": "untuk",
+          "Length": 5,
+          "BoundaryType": "WordBoundary"
+        }
+      }
+    },
+    {
+      "Type": "WordBoundary",
+      "Data": {
+        "Offset": 21500000,
+        "Duration": 4750000,
+        "text": {
+          "Text": "debugging",
+          "Length": 9,
+          "BoundaryType": "WordBoundary"
+        }
+      }
+    },
+    {
+      "Type": "WordBoundary",
+      "Data": {
+        "Offset": 26250000,
+        "Duration": 6375000,
+        "text": {
+          "Text": "v2",
+          "Length": 2,
+          "BoundaryType": "WordBoundary"
+        }
+      }
+    }
+  ]
+}

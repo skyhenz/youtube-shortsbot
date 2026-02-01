@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Bot Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+    <div id="login-screen" class="container">
+        <h1>Bot Access</h1>
+        <div class="card">
+            <input type="password" id="password" placeholder="Enter Password">
+            <button onclick="login()">Login</button>
+        </div>
+    </div>
+
+    <div id="dashboard" class="container" style="display: none;">
+        <header>
+            <h1>YouTube Bot Dashboard</h1>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </header>
+
+        <div class="grid">
+            <!-- Bot Control -->
+            <div class="card">
+                <h2>Bot Control</h2>
+                <div class="status-badge" id="bot-status">IDLE</div>
+                <div class="controls">
+                    <button id="start-btn" onclick="startBot()">Start Bot</button>
+                    <button id="stop-btn" class="danger" onclick="stopBot()">Stop Bot</button>
+                </div>
+                <p id="next-run" class="subtext"></p>
+            </div>
+
+            <!-- Monitoring -->
+            <div class="card">
+                <h2>Latest Activity</h2>
+                <div class="metric">
+                    <span>Last Video:</span>
+                    <strong id="last-video">-</strong>
+                </div>
+                <div class="metric">
+                    <span>Last Upload:</span>
+                    <strong id="last-upload">-</strong>
+                </div>
+                <div class="metric">
+                    <span>Last Failed:</span>
+                    <strong id="last-failed" class="error">-</strong>
+                </div>
+            </div>
+
+            <!-- Monetization -->
+            <div class="card">
+                <h2>Monetization</h2>
+                <div class="metric">
+                    <span>CTA Variants:</span>
+                    <strong id="cta-count">0</strong>
+                </div>
+                <div class="metric">
+                    <span>Affiliate Links:</span>
+                    <strong id="affiliate-count">0</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logs -->
+        <div class="card logs-section">
+            <h2>System Logs</h2>
+            <div class="tabs">
+                <button onclick="loadLog('upload_failed.log')">Upload Failed</button>
+                <button onclick="loadLog('rotation.log')">Rotation</button>
+                <button onclick="loadLog('ai_recommendation.json')">AI Recs</button>
+                <button id="monthly-log-btn">Current Month</button>
+            </div>
+            <pre id="log-viewer">Select a log to view...</pre>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

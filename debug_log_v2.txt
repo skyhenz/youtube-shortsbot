@@ -1,0 +1,59 @@
+???? Starting Video Improvement Test...
+???? Testing with: paket_konten\paket_konten_001.md
+??? Script data generated
+??? Voice generated: D:\react\bot yt\output\audio_20260121_124955.mp3
+???? Generating Video...
+???????  Fetching images for segments...
+???? Fetching image for segment 0 ("3 Fakta Menarik Air")...
+???? Fetching image for segment 1 ("1 Air Tutupi 70% Bumi")...
+???? Fetching image for segment 2 ("Hanya 3% Bisa Diminum")...
+???? Fetching image for segment 3 ("2 Tubuh 60% Air")...
+???? Fetching image for segment 4 ("Otak 75% Air")...
+???? Fetching image for segment 5 ("3 Air Bisa Didih & Beku Bersamaan")...
+???? Fetching image for segment 6 ("Titik Tripel")...
+???? Fetching image for segment 7 ("Air Penuh Keajaiban")...
+???? RAW FFmpeg Command:
+ffmpeg -loop 1 -t 1.25 -i D:\react\bot yt\assets\temp_bg\bg_0_3_fakta_menarik_air.jpg -loop 1 -t 1.25 -i D:\react\bot yt\assets\temp_bg\bg_1_1_air_tutupi_70__bumi.jpg -loop 1 -t 1.25 -i D:\react\bot yt\assets\temp_bg\bg_2_hanya_3__bisa_diminum.jpg -loop 1 -t 1.25 -i D:\react\bot yt\assets\temp_bg\bg_3_2_tubuh_60__air.jpg -loop 1 -t 1.25 -i D:\react\bot yt\assets\temp_bg\bg_4_otak_75__air.jpg -loop 1 -t 1.25 -i D:\react\bot yt\assets\temp_bg\bg_5_3_air_bisa_didih___beku_bersamaan.jpg -loop 1 -t 1.25 -i D:\react\bot yt\assets\temp_bg\bg_6_titik_tripel.jpg -loop 1 -t 1.25 -i D:\react\bot yt\assets\temp_bg\bg_7_air_penuh_keajaiban.jpg -i D:\react\bot yt\output\audio_20260121_124955.mp3 -y -filter_complex [0:v]scale=1080:1920,zoompan=z='zoom+0.001':d=38:s=1080x1920:fps=30[v0];[v0]drawtext=text='3 Fakta Menarik Air':fontfile='D\:/react/bot yt/assets/font.ttf':fontsize=65:fontcolor=0xFFFFFF:x=(w-text_w)/2:y=h/3:box=1:boxcolor=black@0.6:boxborderw=10:enable='between(t,0,1.25)'[vout0];[1:v]scale=1080:1920,zoompan=z='zoom+0.001':d=38:s=1080x1920:fps=30[v1];[v1]drawtext=text='#1 Air Tutupi 70% Bumi':fontfile='D\:/react/bot yt/assets/font.ttf':fontsize=85:fontcolor=0xFFD700:x=(w-text_w)/2:y=h/3:box=1:boxcolor=black@0.6:boxborderw=10:enable='between(t,1.25,2.5)'[vout1];[2:v]scale=1080:1920,zoompan=z='zoom+0.001':d=38:s=1080x1920:fps=30[v2];[v2]drawtext=text='Hanya 3% Bisa Diminum':fontfile='D\:/react/bot yt/assets/font.ttf':fontsize=65:fontcolor=0xFFFFFF:x=(w-text_w)/2:y=h/3:box=1:boxcolor=black@0.6:boxborderw=10:enable='between(t,2.5,3.75)'[vout2];[3:v]scale=1080:1920,zoompan=z='zoom+0.001':d=38:s=1080x1920:fps=30[v3];[v3]drawtext=text='#2 Tubuh 60% Air':fontfile='D\:/react/bot yt/assets/font.ttf':fontsize=85:fontcolor=0xFFD700:x=(w-text_w)/2:y=h/3:box=1:boxcolor=black@0.6:boxborderw=10:enable='between(t,3.75,5)'[vout3];[4:v]scale=1080:1920,zoompan=z='zoom+0.001':d=38:s=1080x1920:fps=30[v4];[v4]drawtext=text='Otak 75% Air':fontfile='D\:/react/bot yt/assets/font.ttf':fontsize=65:fontcolor=0xFFFFFF:x=(w-text_w)/2:y=h/3:box=1:boxcolor=black@0.6:boxborderw=10:enable='between(t,5,6.25)'[vout4];[5:v]scale=1080:1920,zoompan=z='zoom+0.001':d=38:s=1080x1920:fps=30[v5];[v5]drawtext=text='#3 Air Bisa Didih & Beku Bersamaan':fontfile='D\:/react/bot yt/assets/font.ttf':fontsize=85:fontcolor=0xFFD700:x=(w-text_w)/2:y=h/3:box=1:boxcolor=black@0.6:boxborderw=10:enable='between(t,6.25,7.5)'[vout5];[6:v]scale=1080:1920,zoompan=z='zoom+0.001':d=38:s=1080x1920:fps=30[v6];[v6]drawtext=text='Titik Tripel':fontfile='D\:/react/bot yt/assets/font.ttf':fontsize=65:fontcolor=0xFFFFFF:x=(w-text_w)/2:y=h/3:box=1:boxcolor=black@0.6:boxborderw=10:enable='between(t,7.5,8.75)'[vout6];[7:v]scale=1080:1920,zoompan=z='zoom+0.001':d=38:s=1080x1920:fps=30[v7];[v7]drawtext=text='Air Penuh Keajaiban':fontfile='D\:/react/bot yt/assets/font.ttf':fontsize=65:fontcolor=0xFFFFFF:x=(w-text_w)/2:y=h/3:box=1:boxcolor=black@0.6:boxborderw=10:enable='between(t,8.75,10)'[vout7];[vout0][vout1][vout2][vout3][vout4][vout5][vout6][vout7]concat=n=8:v=1:a=0[vfinal] -map [vfinal] -map [8:a] -c:v libx264 -pix_fmt yuv420p -r 30 -b:v 6000k -c:a aac -b:a 128k -t 40 -shortest D:\react\bot yt\output\20260121_124957_3_fakta_menarik_tentang_air.mp4
+FFmpeg: ffmpeg version 6.1.1-essentials_build-www.gyan.dev Copyright (c) 2000-2023 the FFmpeg developers
+FFmpeg:   built with gcc 12.2.0 (Rev10, Built by MSYS2 project)
+FFmpeg:   configuration: --enable-gpl --enable-version3 --enable-static --pkg-config=pkgconf --disable-w32threads --disable-autodetect --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-ffnvcodec --enable-nvdec --enable-nvenc --enable-dxva2 --enable-d3d11va --enable-libvpl --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+FFmpeg:   libavutil      58. 29.100 / 58. 29.100
+FFmpeg:   libavcodec     60. 31.102 / 60. 31.102
+FFmpeg:   libavformat    60. 16.100 / 60. 16.100
+FFmpeg:   libavdevice    60.  3.100 / 60.  3.100
+FFmpeg:   libavfilter     9. 12.100 /  9. 12.100
+FFmpeg:   libswscale      7.  5.100 /  7.  5.100
+FFmpeg:   libswresample   4. 12.100 /  4. 12.100
+FFmpeg:   libpostproc    57.  3.100 / 57.  3.100
+FFmpeg: Input #0, image2, from 'D:\react\bot yt\assets\temp_bg\bg_0_3_fakta_menarik_air.jpg':
+FFmpeg:   Duration: 00:00:00.04, start: 0.000000, bitrate: 14222 kb/s
+FFmpeg:   Stream #0:0: Video: mjpeg (Progressive), yuvj420p(pc, bt470bg/unknown/unknown), 1080x1920, 25 fps, 25 tbr, 25 tbn
+FFmpeg: Input #1, image2, from 'D:\react\bot yt\assets\temp_bg\bg_1_1_air_tutupi_70__bumi.jpg':
+FFmpeg:   Duration: 00:00:00.04, start: 0.000000, bitrate: 19114 kb/s
+FFmpeg:   Stream #1:0: Video: mjpeg (Progressive), yuvj420p(pc, bt470bg/unknown/unknown), 1080x1920, 25 fps, 25 tbr, 25 tbn
+FFmpeg: Input #2, image2, from 'D:\react\bot yt\assets\temp_bg\bg_2_hanya_3__bisa_diminum.jpg':
+FFmpeg:   Duration: 00:00:00.04, start: 0.000000, bitrate: 86072 kb/s
+FFmpeg:   Stream #2:0: Video: mjpeg (Progressive), yuvj420p(pc, bt470bg/unknown/unknown), 1080x1920, 25 fps, 25 tbr, 25 tbn
+FFmpeg: Input #3, image2, from 'D:\react\bot yt\assets\temp_bg\bg_3_2_tubuh_60__air.jpg':
+FFmpeg:   Duration: 00:00:00.04, start: 0.000000, bitrate: 68843 kb/s
+FFmpeg:   Stream #3:0: Video: mjpeg (Progressive), yuvj420p(pc, bt470bg/unknown/unknown), 1080x1920, 25 fps, 25 tbr, 25 tbn
+FFmpeg: Input #4, image2, from 'D:\react\bot yt\assets\temp_bg\bg_4_otak_75__air.jpg':
+FFmpeg:   Duration: 00:00:00.04, start: 0.000000, bitrate: 38368 kb/s
+FFmpeg:   Stream #4:0: Video: mjpeg (Progressive), yuvj420p(pc, bt470bg/unknown/unknown), 1080x1920, 25 fps, 25 tbr, 25 tbn
+FFmpeg: Input #5, image2, from 'D:\react\bot yt\assets\temp_bg\bg_5_3_air_bisa_didih___beku_bersamaan.jpg':
+FFmpeg:   Duration: 00:00:00.04, start: 0.000000, bitrate: 10023 kb/s
+FFmpeg:   Stream #5:0: Video: mjpeg (Progressive), yuvj420p(pc, bt470bg/unknown/unknown), 1080x1920, 25 fps, 25 tbr, 25 tbn
+FFmpeg: Input #6, image2, from 'D:\react\bot yt\assets\temp_bg\bg_6_titik_tripel.jpg':
+FFmpeg:   Duration: 00:00:00.04, start: 0.000000, bitrate: 24439 kb/s
+FFmpeg:   Stream #6:0: Video: mjpeg (Progressive), yuvj420p(pc, bt470bg/unknown/unknown), 1080x1920, 25 fps, 25 tbr, 25 tbn
+FFmpeg: Input #7, image2, from 'D:\react\bot yt\assets\temp_bg\bg_7_air_penuh_keajaiban.jpg':
+FFmpeg:   Duration: 00:00:00.04, start: 0.000000, bitrate: 61554 kb/s
+FFmpeg:   Stream #7:0: Video: mjpeg (Progressive), yuvj420p(pc, bt470bg/unknown/unknown), 1080x1920, 25 fps, 25 tbr, 25 tbn
+FFmpeg: [mp3 @ 000002a926189d40] Estimating duration from bitrate, this may be inaccurate
+FFmpeg: Input #8, mp3, from 'D:\react\bot yt\output\audio_20260121_124955.mp3':
+FFmpeg:   Duration: 00:00:35.28, start: 0.000000, bitrate: 64 kb/s
+FFmpeg:   Stream #8:0: Audio: mp3, 24000 Hz, mono, fltp, 64 kb/s
+FFmpeg: [out#0/mp4 @ 000002a923569c00] Output with label '8:a' does not exist in any defined filter graph, or was already used elsewhere.
+FFmpeg: Error opening output file D:\react\bot yt\output\20260121_124957_3_fakta_menarik_tentang_air.mp4.
+FFmpeg: Error opening output files: Invalid argument
+FFmpeg: 

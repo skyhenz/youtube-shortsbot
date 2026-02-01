@@ -1,15 +1,24 @@
-# YouTube Shorts Automation Bot
+# YouTube Shorts Automation Bot - Psychology Niche
 
-Bot otomatis untuk menghasilkan dan upload video YouTube Shorts dari paket konten.
+Automated YouTube Shorts video generator and uploader focused on **Psychology & Human Behavior** content.
 
-## Fitur
+## Features
 
-- ✅ Baca paket konten dari file markdown
-- ✅ Generate audio TTS bahasa Indonesia
-- ✅ Buat video vertikal 9:16 dengan FFmpeg
-- ✅ Upload otomatis ke YouTube
-- ✅ Jadwal upload setiap 8 jam (07:00, 15:00, 23:00 WIB)
-- ✅ Tidak perlu PC menyala 24 jam (pakai GitHub Actions)
+- 🧠 **Psychology Niche Content**: Accurate, safe, research-backed facts
+- 🎥 **Automated Video Generation**: TTS + Text overlays
+- 📤 **Auto Upload to YouTube**: GitHub Actions scheduling
+- 🛡️ **Production Hardened**: Validation, rate limits, quota protection
+- 🔒 **Copyright Safe**: Text-only, no stock footage
+- 📊 **Health Monitoring**: Comprehensive logging system
+- 🧪 **Test Mode**: Safe testing without uploads
+
+## Content Packages
+
+- `paket_konten_001.md` - 3 Fakta Menarik Tentang Air
+- `paket_konten_002.md` - [Topic 2]
+- `paket_konten_003.md` - 3 Fakta Menarik Tentang Otak Manusia ✨
+- `paket_konten_004.md` - 3 Fakta Psikologi Tentang Kebahagiaan ✨
+- `paket_konten_005.md` - 3 Fakta Psikologi Tentang Memori ✨
 
 ## Instalasi
 

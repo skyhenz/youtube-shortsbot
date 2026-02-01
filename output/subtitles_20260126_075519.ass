@@ -1,0 +1,33 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Inter,70,&H00FFFFFF,&H0000FFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,3,2,5,50,50,960,1
+Style: Karaoke,Inter,75,&H00FFFFFF,&H0000FFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,4,0,5,50,50,960,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.10,0:00:02.11,Karaoke,,0,0,0,,{\k48}Pernahkah {\k23}Anda {\k35}menganggap {\k43}seseorang
+Dialogue: 0,0:00:01.61,0:00:03.35,Karaoke,,0,0,0,,{\k11}yang {\k52}berpenampilan {\k35}menarik {\k25}juga
+Dialogue: 0,0:00:02.85,0:00:04.41,Karaoke,,0,0,0,,{\k26}pasti {\k45}cerdas {\k15}dan {\k20}baik
+Dialogue: 0,0:00:03.91,0:00:06.71,Karaoke,,0,0,0,,{\k48}hati {\k43}Inilah {\k13}yang {\k40}disebut
+Dialogue: 0,0:00:06.21,0:00:08.82,Karaoke,,0,0,0,,{\k25}Halo {\k55}Effect {\k28}Otak {\k18}kita
+Dialogue: 0,0:00:08.32,0:00:10.44,Karaoke,,0,0,0,,{\k31}cenderung {\k37}memberikan {\k43}penilaian {\k50}menyeluruh
+Dialogue: 0,0:00:09.94,0:00:11.84,Karaoke,,0,0,0,,{\k23}hanya {\k61}berdasarkan {\k30}satu {\k25}kesan
+Dialogue: 0,0:00:11.34,0:00:14.18,Karaoke,,0,0,0,,{\k67}positif {\k27}Jika {\k18}kita {\k35}menyukai
+Dialogue: 0,0:00:13.68,0:00:15.57,Karaoke,,0,0,0,,{\k23}satu {\k32}aspek {\k16}dari {\k66}seseorang
+Dialogue: 0,0:00:15.40,0:00:17.10,Karaoke,,0,0,0,,{\k21}kita {\k31}cenderung {\k36}menganggap {\k31}aspek
+Dialogue: 0,0:00:16.60,0:00:19.38,Karaoke,,0,0,0,,{\k33}lainnya {\k23}juga {\k42}hebat {\k43}Kesalahan
+Dialogue: 0,0:00:18.88,0:00:20.66,Karaoke,,0,0,0,,{\k40}persepsi {\k22}ini {\k23}sering {\k41}terjadi
+Dialogue: 0,0:00:20.16,0:00:22.46,Karaoke,,0,0,0,,{\k23}dalam {\k37}wawancara {\k55}kerja {\k38}hubungan
+Dialogue: 0,0:00:21.96,0:00:24.20,Karaoke,,0,0,0,,{\k60}sosial {\k40}bahkan {\k23}saat {\k22}kita
+Dialogue: 0,0:00:23.69,0:00:26.80,Karaoke,,0,0,0,,{\k77}berbelanja {\k43}Follow {\k17}dan {\k37}jadilah
+Dialogue: 0,0:00:26.30,0:00:27.73,Karaoke,,0,0,0,,{\k20}lebih {\k37}pintar {\k18}dari {\k17}hari
+Dialogue: 0,0:00:27.23,0:00:30.09,Karaoke,,0,0,0,,{\k57}kemarin {\k47}Menyadari {\k21}bias {\k26}ini
+Dialogue: 0,0:00:29.60,0:00:31.27,Karaoke,,0,0,0,,{\k27}adalah {\k25}langkah {\k42}pertama {\k22}untuk
+Dialogue: 0,0:00:30.77,0:00:32.42,Karaoke,,0,0,0,,{\k28}melihat {\k35}dunia {\k31}secara {\k20}lebih
+Dialogue: 0,0:00:31.92,0:00:33.20,Karaoke,,0,0,0,,{\k77}objektif

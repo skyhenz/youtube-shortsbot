@@ -1,0 +1,51 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Inter,70,&H00FFFFFF,&H0000FFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,3,2,5,50,50,960,1
+Style: Karaoke,Inter,75,&H00FFFFFF,&H0000FFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,4,0,5,50,50,960,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.10,0:00:01.83,Karaoke,,0,0,0,,{\k51}Bayangkan {\k30}sebuah {\k33}dunia {\k8}di
+Dialogue: 0,0:00:01.33,0:00:02.89,Karaoke,,0,0,0,,{\k17}mana {\k46}manusia {\k23}tidak {\k18}lagi
+Dialogue: 0,0:00:02.39,0:00:03.98,Karaoke,,0,0,0,,{\k36}terikat {\k28}hanya {\k20}pada {\k23}satu
+Dialogue: 0,0:00:03.48,0:00:06.42,Karaoke,,0,0,0,,{\k52}planet {\k46}Perjalanan {\k30}menuju {\k30}Mars
+Dialogue: 0,0:00:05.92,0:00:07.54,Karaoke,,0,0,0,,{\k25}bukan {\k25}lagi {\k36}sekadar {\k26}mimpi
+Dialogue: 0,0:00:07.04,0:00:09.48,Karaoke,,0,0,0,,{\k27}fiksi {\k60}ilmiah {\k42}melainkan {\k32}tujuan
+Dialogue: 0,0:00:08.98,0:00:10.35,Karaoke,,0,0,0,,{\k28}nyata {\k13}yang {\k26}sedang {\k17}kita
+Dialogue: 0,0:00:09.84,0:00:11.38,Karaoke,,0,0,0,,{\k32}kejar {\k23}dengan {\k33}tekad {\k13}yang
+Dialogue: 0,0:00:10.88,0:00:13.86,Karaoke,,0,0,0,,{\k18}luar {\k61}biasa {\k57}Diperlukan {\k26}waktu
+Dialogue: 0,0:00:13.36,0:00:15.38,Karaoke,,0,0,0,,{\k61}berbulan-bulan {\k40}melintasi {\k18}ruang {\k32}hampa
+Dialogue: 0,0:00:14.88,0:00:16.56,Karaoke,,0,0,0,,{\k17}yang {\k30}dingin {\k13}dan {\k56}berbahaya
+Dialogue: 0,0:00:16.06,0:00:17.81,Karaoke,,0,0,0,,{\k32}untuk {\k38}mencapai {\k33}planet {\k20}merah
+Dialogue: 0,0:00:17.31,0:00:20.04,Karaoke,,0,0,0,,{\k57}tersebut {\k17}Para {\k42}astronot {\k21}masa
+Dialogue: 0,0:00:19.55,0:00:21.37,Karaoke,,0,0,0,,{\k30}depan {\k23}harus {\k40}menghadapi {\k38}radiasi
+Dialogue: 0,0:00:20.87,0:00:23.61,Karaoke,,0,0,0,,{\k53}kosmik {\k43}isolasi {\k52}total {\k22}dan
+Dialogue: 0,0:00:23.11,0:00:24.76,Karaoke,,0,0,0,,{\k37}lingkungan {\k32}Mars {\k13}yang {\k31}sangat
+Dialogue: 0,0:00:24.26,0:00:27.67,Karaoke,,0,0,0,,{\k20}tidak {\k47}ramah {\k50}Namun {\k56}keberhasilan
+Dialogue: 0,0:00:27.17,0:00:28.56,Karaoke,,0,0,0,,{\k30}mendarat {\k7}di {\k30}sana {\k21}akan
+Dialogue: 0,0:00:28.06,0:00:29.76,Karaoke,,0,0,0,,{\k30}menjadi {\k25}langkah {\k42}terbesar {\k22}dalam
+Dialogue: 0,0:00:29.26,0:00:31.35,Karaoke,,0,0,0,,{\k37}sejarah {\k38}evolusi {\k51}manusia {\k31}sejak
+Dialogue: 0,0:00:30.85,0:00:32.38,Karaoke,,0,0,0,,{\k20}kita {\k33}pertama {\k20}kali {\k30}keluar
+Dialogue: 0,0:00:31.88,0:00:34.39,Karaoke,,0,0,0,,{\k20}dari {\k42}gua {\k26}Ini {\k28}adalah
+Dialogue: 0,0:00:33.89,0:00:35.81,Karaoke,,0,0,0,,{\k26}tentang {\k47}memastikan {\k43}kelangsungan {\k23}hidup
+Dialogue: 0,0:00:35.31,0:00:37.26,Karaoke,,0,0,0,,{\k42}spesies {\k37}kita {\k17}dan {\k47}memuaskan
+Dialogue: 0,0:00:36.76,0:00:38.18,Karaoke,,0,0,0,,{\k22}rasa {\k21}ingin {\k31}tahu {\k17}yang
+Dialogue: 0,0:00:37.68,0:00:39.23,Karaoke,,0,0,0,,{\k12}tak {\k45}terbatas {\k27}tentang {\k20}alam
+Dialogue: 0,0:00:38.73,0:00:41.43,Karaoke,,0,0,0,,{\k63}semesta {\k36}Setiap {\k25}roket {\k11}yang
+Dialogue: 0,0:00:40.93,0:00:42.76,Karaoke,,0,0,0,,{\k36}meluncur {\k33}membawa {\k31}harapan {\k31}jutaan
+Dialogue: 0,0:00:42.26,0:00:44.16,Karaoke,,0,0,0,,{\k33}orang {\k26}untuk {\k32}melihat {\k47}peradaban
+Dialogue: 0,0:00:43.66,0:00:47.05,Karaoke,,0,0,0,,{\k56}multi-planet {\k61}pertama {\k38}Tantangan {\k47}teknisnya
+Dialogue: 0,0:00:46.54,0:00:48.60,Karaoke,,0,0,0,,{\k22}memang {\k25}sangat {\k50}besar {\k31}tetapi
+Dialogue: 0,0:00:48.10,0:00:50.31,Karaoke,,0,0,0,,{\k36}semangat {\k56}penjelajahan {\k43}manusia {\k35}jauh
+Dialogue: 0,0:00:49.81,0:00:52.29,Karaoke,,0,0,0,,{\k20}lebih {\k51}besar {\k25}Mari {\k18}kita
+Dialogue: 0,0:00:51.79,0:00:53.41,Karaoke,,0,0,0,,{\k37}bersiap {\k18}untuk {\k26}babak {\k28}baru
+Dialogue: 0,0:00:52.91,0:00:54.71,Karaoke,,0,0,0,,{\k21}dalam {\k35}sejarah {\k23}umat {\k50}manusia
+Dialogue: 0,0:00:54.21,0:00:57.14,Karaoke,,0,0,0,,{\k12}di {\k28}antara {\k85}bintang-bintang {\k33}Fakta
+Dialogue: 0,0:00:56.64,0:00:57.97,Karaoke,,0,0,0,,{\k22}unik {\k33}lainnya {\k18}ada {\k7}di
+Dialogue: 0,0:00:57.47,0:00:59.57,Karaoke,,0,0,0,,{\k28}profil {\k47}kami {\k23}cek {\k35}yuk

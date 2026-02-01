@@ -1,0 +1,43 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Inter,70,&H00FFFFFF,&H0000FFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,3,2,5,50,50,960,1
+Style: Karaoke,Inter,75,&H00FFFFFF,&H0000FFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,4,0,5,50,50,960,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.10,0:00:01.68,Karaoke,,0,0,0,,{\k41}Tahukah {\k31}Anda {\k27}bahwa {\k8}di
+Dialogue: 0,0:00:01.18,0:00:03.11,Karaoke,,0,0,0,,{\k20}luar {\k35}angkasa {\k38}sangatlah {\k48}sunyi
+Dialogue: 0,0:00:03.46,0:00:05.27,Karaoke,,0,0,0,,{\k27}Karena {\k21}tidak {\k13}ada {\k68}atmosfer
+Dialogue: 0,0:00:05.04,0:00:06.61,Karaoke,,0,0,0,,{\k31}suara {\k20}tidak {\k20}bisa {\k35}merambat
+Dialogue: 0,0:00:06.11,0:00:08.98,Karaoke,,0,0,0,,{\k21}sama {\k57}sekali {\k27}Selain {\k46}itu
+Dialogue: 0,0:00:08.75,0:00:10.17,Karaoke,,0,0,0,,{\k28}jika {\k18}Anda {\k36}berdiri {\k8}di
+Dialogue: 0,0:00:09.67,0:00:11.66,Karaoke,,0,0,0,,{\k26}planet {\k52}Venus {\k21}Anda {\k17}akan
+Dialogue: 0,0:00:11.16,0:00:13.02,Karaoke,,0,0,0,,{\k41}merasakan {\k22}suhu {\k33}panas {\k38}mencapai
+Dialogue: 0,0:00:12.52,0:00:13.88,Karaoke,,0,0,0,,{\k23}empat {\k27}ratus {\k18}enam {\k16}puluh
+Dialogue: 0,0:00:13.38,0:00:15.62,Karaoke,,0,0,0,,{\k35}derajat {\k63}Celsius {\k30}cukup {\k20}untuk
+Dialogue: 0,0:00:15.12,0:00:17.97,Karaoke,,0,0,0,,{\k42}melelehkan {\k47}timah {\k32}Fakta {\k28}menarik
+Dialogue: 0,0:00:17.47,0:00:19.12,Karaoke,,0,0,0,,{\k37}lainnya {\k28}adalah {\k30}jejak {\k18}kaki
+Dialogue: 0,0:00:18.62,0:00:20.12,Karaoke,,0,0,0,,{\k42}astronot {\k7}di {\k28}Bulan {\k21}akan
+Dialogue: 0,0:00:19.62,0:00:20.92,Karaoke,,0,0,0,,{\k25}tetap {\k20}ada {\k6}di {\k28}sana
+Dialogue: 0,0:00:20.42,0:00:22.19,Karaoke,,0,0,0,,{\k27}selama {\k35}jutaan {\k38}tahun {\k26}karena
+Dialogue: 0,0:00:21.69,0:00:23.10,Karaoke,,0,0,0,,{\k21}tidak {\k16}ada {\k30}angin {\k22}untuk
+Dialogue: 0,0:00:22.60,0:00:25.71,Karaoke,,0,0,0,,{\k76}menghapusnya {\k40}Tahukah {\k32}Anda {\k28}bahwa
+Dialogue: 0,0:00:25.21,0:00:27.03,Karaoke,,0,0,0,,{\k43}matahari {\k41}menyumbang {\k30}sembilan {\k17}puluh
+Dialogue: 0,0:00:26.53,0:00:28.05,Karaoke,,0,0,0,,{\k28}sembilan {\k28}persen {\k36}massa {\k7}di
+Dialogue: 0,0:00:27.55,0:00:29.26,Karaoke,,0,0,0,,{\k31}seluruh {\k18}tata {\k25}surya {\k46}kita
+Dialogue: 0,0:00:29.61,0:00:31.98,Karaoke,,0,0,0,,{\k58}Terakhir {\k15}di {\k20}luar {\k67}angkasa
+Dialogue: 0,0:00:31.75,0:00:33.12,Karaoke,,0,0,0,,{\k31}jika {\k16}dua {\k28}logam {\k11}yang
+Dialogue: 0,0:00:32.62,0:00:34.87,Karaoke,,0,0,0,,{\k21}sama {\k75}bersentuhan {\k28}mereka {\k17}akan
+Dialogue: 0,0:00:34.37,0:00:36.10,Karaoke,,0,0,0,,{\k31}menyatu {\k27}secara {\k42}permanen {\k21}dalam
+Dialogue: 0,0:00:35.60,0:00:37.57,Karaoke,,0,0,0,,{\k48}fenomena {\k15}yang {\k37}disebut {\k46}pengelasan
+Dialogue: 0,0:00:37.07,0:00:39.78,Karaoke,,0,0,0,,{\k48}dingin {\k26}Alam {\k38}semesta {\k23}memang
+Dialogue: 0,0:00:39.28,0:00:41.09,Karaoke,,0,0,0,,{\k30}penuh {\k22}dengan {\k61}keajaiban {\k17}yang
+Dialogue: 0,0:00:40.60,0:00:43.46,Karaoke,,0,0,0,,{\k15}tak {\k80}terbayangkan {\k33}Dukung {\k23}kami
+Dialogue: 0,0:00:42.96,0:00:45.06,Karaoke,,0,0,0,,{\k21}dengan {\k18}cara {\k50}follow {\k46}gratis
+Dialogue: 0,0:00:44.56,0:00:45.39,Karaoke,,0,0,0,,{\k33}lho

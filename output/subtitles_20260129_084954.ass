@@ -1,0 +1,53 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Inter,70,&H00FFFFFF,&H0000FFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,3,2,5,50,50,960,1
+Style: Karaoke,Inter,75,&H00FFFFFF,&H0000FFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,4,0,5,50,50,960,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.10,0:00:01.93,Karaoke,,0,0,0,,{\k40}Tahukah {\k31}Anda {\k27}bahwa {\k35}rata-rata
+Dialogue: 0,0:00:01.43,0:00:03.02,Karaoke,,0,0,0,,{\k20}orang {\k37}berbohong {\k22}tiga {\k28}kali
+Dialogue: 0,0:00:02.52,0:00:04.40,Karaoke,,0,0,0,,{\k21}dalam {\k28}sepuluh {\k17}menit {\k70}percakapan
+Dialogue: 0,0:00:04.73,0:00:07.03,Karaoke,,0,0,0,,{\k55}Namun {\k27}tubuh {\k35}manusia {\k32}sulit
+Dialogue: 0,0:00:06.53,0:00:09.00,Karaoke,,0,0,0,,{\k23}untuk {\k61}menyembunyikan {\k42}kebenaran {\k68}sepenuhnya
+Dialogue: 0,0:00:09.34,0:00:11.68,Karaoke,,0,0,0,,{\k21}Tanda {\k41}pertama {\k27}adalah {\k93}mikrokekakuan
+Dialogue: 0,0:00:11.46,0:00:13.92,Karaoke,,0,0,0,,{\k31}ketika {\k40}seseorang {\k60}berbohong {\k36}gerakan
+Dialogue: 0,0:00:13.42,0:00:14.98,Karaoke,,0,0,0,,{\k22}tubuh {\k25}mereka {\k31}cenderung {\k27}menjadi
+Dialogue: 0,0:00:14.48,0:00:16.18,Karaoke,,0,0,0,,{\k27}kaku {\k17}atau {\k52}terbatas {\k22}karena
+Dialogue: 0,0:00:15.68,0:00:17.31,Karaoke,,0,0,0,,{\k23}otak {\k30}terlalu {\k40}fokus {\k18}pada
+Dialogue: 0,0:00:16.81,0:00:19.57,Karaoke,,0,0,0,,{\k31}cerita {\k27}palsu {\k60}tersebut {\k22}Tanda
+Dialogue: 0,0:00:19.07,0:00:21.07,Karaoke,,0,0,0,,{\k32}kedua {\k26}adalah {\k35}sentuhan {\k56}wajah
+Dialogue: 0,0:00:20.81,0:00:22.82,Karaoke,,0,0,0,,{\k31}secara {\k21}tidak {\k51}sadar {\k22}orang
+Dialogue: 0,0:00:22.32,0:00:23.82,Karaoke,,0,0,0,,{\k10}yang {\k37}berbohong {\k23}sering {\k28}menyentuh
+Dialogue: 0,0:00:23.32,0:00:24.84,Karaoke,,0,0,0,,{\k32}hidung {\k17}atau {\k31}menutup {\k21}mulut
+Dialogue: 0,0:00:24.35,0:00:26.92,Karaoke,,0,0,0,,{\k52}mereka {\k53}seolah-olah {\k40}berusaha {\k35}menahan
+Dialogue: 0,0:00:26.42,0:00:28.19,Karaoke,,0,0,0,,{\k40}kata-kata {\k35}bohong {\k27}agar {\k25}tidak
+Dialogue: 0,0:00:27.69,0:00:30.22,Karaoke,,0,0,0,,{\k48}keluar {\k22}Tanda {\k32}ketiga {\k13}yang
+Dialogue: 0,0:00:29.72,0:00:31.22,Karaoke,,0,0,0,,{\k18}paling {\k33}akurat {\k28}adalah {\k18}arah
+Dialogue: 0,0:00:30.72,0:00:32.93,Karaoke,,0,0,0,,{\k48}mata {\k27}jika {\k37}seseorang {\k30}melihat
+Dialogue: 0,0:00:32.43,0:00:33.68,Karaoke,,0,0,0,,{\k6}ke {\k17}arah {\k30}kanan {\k21}atas
+Dialogue: 0,0:00:33.18,0:00:34.86,Karaoke,,0,0,0,,{\k26}secara {\k35}mendadak {\k20}saat {\k36}menjawab
+Dialogue: 0,0:00:34.36,0:00:37.07,Karaoke,,0,0,0,,{\k68}pertanyaan {\k28}mereka {\k43}biasanya {\k47}sedang
+Dialogue: 0,0:00:36.64,0:00:39.42,Karaoke,,0,0,0,,{\k81}mengonstruksi {\k23}atau {\k31}mengarang {\k82}imajinasi
+Dialogue: 0,0:00:39.14,0:00:42.11,Karaoke,,0,0,0,,{\k33}bukan {\k30}mengingat {\k55}fakta {\k42}Memahami
+Dialogue: 0,0:00:41.61,0:00:43.25,Karaoke,,0,0,0,,{\k27}teknik {\k36}deteksi {\k25}ini {\k25}bukan
+Dialogue: 0,0:00:42.75,0:00:44.58,Karaoke,,0,0,0,,{\k22}hanya {\k27}tentang {\k31}menangkap {\k52}penipu
+Dialogue: 0,0:00:44.37,0:00:46.00,Karaoke,,0,0,0,,{\k32}tetapi {\k26}tentang {\k37}melindungi {\k16}diri
+Dialogue: 0,0:00:45.50,0:00:47.16,Karaoke,,0,0,0,,{\k32}Anda {\k17}dari {\k57}manipulasi {\k8}di
+Dialogue: 0,0:00:46.66,0:00:48.17,Karaoke,,0,0,0,,{\k35}dunia {\k16}yang {\k27}penuh {\k22}dengan
+Dialogue: 0,0:00:47.67,0:00:51.16,Karaoke,,0,0,0,,{\k73}kepalsuan {\k67}Ingatlah {\k23}mata {\k20}tidak
+Dialogue: 0,0:00:50.66,0:00:52.32,Karaoke,,0,0,0,,{\k22}pernah {\k20}bisa {\k47}berbohong {\k26}meski
+Dialogue: 0,0:00:51.82,0:00:53.77,Karaoke,,0,0,0,,{\k31}bibir {\k55}mengucapkan {\k37}ribuan {\k21}kata
+Dialogue: 0,0:00:53.27,0:00:56.26,Karaoke,,0,0,0,,{\k52}manis {\k43}Gunakan {\k42}pengetahuan {\k26}ini
+Dialogue: 0,0:00:55.76,0:00:57.61,Karaoke,,0,0,0,,{\k33}sebagai {\k35}perisai {\k27}mental {\k38}Anda
+Dialogue: 0,0:00:57.11,0:00:59.00,Karaoke,,0,0,0,,{\k25}dalam {\k30}setiap {\k40}interaksi {\k43}sosial
+Dialogue: 0,0:00:58.50,0:01:01.06,Karaoke,,0,0,0,,{\k26}mulai {\k17}hari {\k42}ini {\k36}Jangan
+Dialogue: 0,0:01:00.56,0:01:02.67,Karaoke,,0,0,0,,{\k38}biarkan {\k46}siapapun {\k50}membodohi {\k26}Anda
+Dialogue: 0,0:01:02.17,0:01:05.08,Karaoke,,0,0,0,,{\k48}lagi {\k35}Suka {\k27}fakta {\k46}ini
+Dialogue: 0,0:01:05.42,0:01:07.56,Karaoke,,0,0,0,,{\k43}Follow {\k23}untuk {\k35}update {\k61}harian

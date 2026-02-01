@@ -1,0 +1,37 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Inter,70,&H00FFFFFF,&H0000FFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,3,2,5,50,50,960,1
+Style: Karaoke,Inter,75,&H00FFFFFF,&H0000FFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,4,0,5,50,50,960,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.11,0:00:01.52,Karaoke,,0,0,0,,{\k27}Dalam {\k28}ruangan {\k12}yang {\k22}penuh
+Dialogue: 0,0:00:01.02,0:00:02.63,Karaoke,,0,0,0,,{\k20}dengan {\k42}orang-orang {\k11}yang {\k37}berteriak
+Dialogue: 0,0:00:02.13,0:00:04.28,Karaoke,,0,0,0,,{\k18}untuk {\k26}mencari {\k67}perhatian {\k22}orang
+Dialogue: 0,0:00:03.78,0:00:05.56,Karaoke,,0,0,0,,{\k12}yang {\k20}paling {\k45}berkuasa {\k50}biasanya
+Dialogue: 0,0:00:05.06,0:00:06.75,Karaoke,,0,0,0,,{\k35}adalah {\k15}yang {\k22}paling {\k46}tenang
+Dialogue: 0,0:00:07.08,0:00:10.07,Karaoke,,0,0,0,,{\k76}Mengapa {\k30}Karena {\k31}diam {\k27}adalah
+Dialogue: 0,0:00:09.57,0:00:12.48,Karaoke,,0,0,0,,{\k28}bentuk {\k31}kendali {\k70}tertinggi {\k26}Saat
+Dialogue: 0,0:00:11.98,0:00:13.53,Karaoke,,0,0,0,,{\k22}Anda {\k21}tidak {\k33}memberikan {\k27}reaksi
+Dialogue: 0,0:00:13.03,0:00:15.13,Karaoke,,0,0,0,,{\k57}segera {\k23}Anda {\k31}memaksa {\k18}orang
+Dialogue: 0,0:00:14.63,0:00:16.27,Karaoke,,0,0,0,,{\k25}lain {\k20}untuk {\k30}mengisi {\k38}kesunyian
+Dialogue: 0,0:00:15.77,0:00:18.12,Karaoke,,0,0,0,,{\k57}tersebut {\k47}seringkali {\k28}membuat {\k23}mereka
+Dialogue: 0,0:00:17.62,0:00:19.75,Karaoke,,0,0,0,,{\k58}membocorkan {\k20}lebih {\k26}banyak {\k57}informasi
+Dialogue: 0,0:00:19.25,0:00:21.80,Karaoke,,0,0,0,,{\k16}dari {\k10}yang {\k71}seharusnya {\k22}Diam
+Dialogue: 0,0:00:21.30,0:00:22.87,Karaoke,,0,0,0,,{\k27}membuat {\k22}Anda {\k40}terlihat {\k17}lebih
+Dialogue: 0,0:00:22.37,0:00:24.76,Karaoke,,0,0,0,,{\k57}cerdas {\k25}lebih {\k35}percaya {\k47}diri
+Dialogue: 0,0:00:24.50,0:00:27.69,Karaoke,,0,0,0,,{\k22}dan {\k25}lebih {\k71}berbahaya {\k67}Ingatlah
+Dialogue: 0,0:00:27.48,0:00:28.86,Karaoke,,0,0,0,,{\k43}kata-kata {\k11}yang {\k18}tidak {\k13}Anda
+Dialogue: 0,0:00:28.36,0:00:30.00,Karaoke,,0,0,0,,{\k48}ucapkan {\k18}tidak {\k17}akan {\k28}pernah
+Dialogue: 0,0:00:29.50,0:00:31.30,Karaoke,,0,0,0,,{\k21}bisa {\k52}digunakan {\k26}untuk {\k30}menyerang
+Dialogue: 0,0:00:30.80,0:00:33.91,Karaoke,,0,0,0,,{\k51}Anda {\k46}Gunakan {\k47}kesunyian {\k32}sebagai
+Dialogue: 0,0:00:33.41,0:00:35.88,Karaoke,,0,0,0,,{\k48}senjata {\k28}untuk {\k48}menguasai {\k71}situasi
+Dialogue: 0,0:00:36.22,0:00:37.97,Karaoke,,0,0,0,,{\k57}Subscribe {\k21}jika {\k21}Anda {\k25}siap
+Dialogue: 0,0:00:37.47,0:00:39.02,Karaoke,,0,0,0,,{\k28}menjadi {\k45}pribadi {\k11}yang {\k20}lebih
+Dialogue: 0,0:00:38.52,0:00:40.22,Karaoke,,0,0,0,,{\k23}tenang {\k28}namun {\k67}mematikan

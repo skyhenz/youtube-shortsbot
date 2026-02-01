@@ -13,30 +13,34 @@ export default {
     clientId: process.env.YOUTUBE_CLIENT_ID,
     clientSecret: process.env.YOUTUBE_CLIENT_SECRET,
     refreshToken: process.env.YOUTUBE_REFRESH_TOKEN,
+    redirectUri: process.env.YOUTUBE_REDIRECT_URI || 'http://localhost:3000/oauth2callback',
     channelId: process.env.YOUTUBE_CHANNEL_ID,
     uploadPrivacy: process.env.UPLOAD_PRIVACY || 'public'
   },
-  
+
   paths: {
     content: process.env.CONTENT_DIR || path.join(__dirname, '..', 'paket_konten'),
     output: process.env.OUTPUT_DIR || path.join(__dirname, '..', 'output'),
     assets: process.env.ASSETS_DIR || path.join(__dirname, '..', 'assets'),
     logs: process.env.LOGS_DIR || path.join(__dirname, '..', 'logs')
   },
-  
+
   tts: {
     language: process.env.TTS_LANGUAGE || 'id',
     speed: parseFloat(process.env.TTS_SPEED) || 1.0
   },
-  
+
   video: {
     width: parseInt(process.env.VIDEO_WIDTH) || 1080,
     height: parseInt(process.env.VIDEO_HEIGHT) || 1920,
     fps: parseInt(process.env.VIDEO_FPS) || 30,
     bitrate: process.env.VIDEO_BITRATE || '8000k'
   },
-  
+
   upload: {
-    autoUpload: process.env.AUTO_UPLOAD === 'true'
-  }
+    autoUpload: process.env.AUTO_UPLOAD === 'true',
+    intervalHours: parseFloat(process.env.UPLOAD_INTERVAL) || 4
+  },
+
+  testMode: process.env.MODE_TEST === 'true'
 };
