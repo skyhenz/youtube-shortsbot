@@ -1,0 +1,36 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Inter,70,&H00FFFFFF,&H0000FFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,3,2,5,50,50,960,1
+Style: Karaoke,Inter,75,&H00FFFFFF,&H0000FFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,4,0,5,50,50,960,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.10,0:00:01.75,Karaoke,,0,0,0,,{\k47}Pernahkah {\k22}Anda {\k26}merasa {\k18}uang
+Dialogue: 0,0:00:01.25,0:00:03.01,Karaoke,,0,0,0,,{\k20}Anda {\k35}habis {\k27}begitu {\k43}saja
+Dialogue: 0,0:00:02.51,0:00:03.78,Karaoke,,0,0,0,,{\k26}tanpa {\k26}tahu {\k7}ke {\k17}mana
+Dialogue: 0,0:00:03.28,0:00:06.51,Karaoke,,0,0,0,,{\k60}perginya {\k33}Itu {\k30}adalah {\k65}fenomena
+Dialogue: 0,0:00:06.09,0:00:09.40,Karaoke,,0,0,0,,{\k62}Lifestyle {\k41}Creep {\k27}Saat {\k43}pendapatan
+Dialogue: 0,0:00:08.90,0:00:10.82,Karaoke,,0,0,0,,{\k46}naik {\k26}gaya {\k26}hidup {\k20}kita
+Dialogue: 0,0:00:10.32,0:00:11.96,Karaoke,,0,0,0,,{\k30}cenderung {\k21}naik {\k17}lebih {\k45}cepat
+Dialogue: 0,0:00:11.73,0:00:13.42,Karaoke,,0,0,0,,{\k30}membuat {\k18}kita {\k23}tetap {\k46}terjebak
+Dialogue: 0,0:00:12.92,0:00:15.02,Karaoke,,0,0,0,,{\k22}dalam {\k35}lingkaran {\k30}setan {\k72}finansial
+Dialogue: 0,0:00:15.36,0:00:17.87,Karaoke,,0,0,0,,{\k68}Ingatlah {\k43}kekayaan {\k10}yang {\k52}sebenarnya
+Dialogue: 0,0:00:17.37,0:00:18.77,Karaoke,,0,0,0,,{\k27}adalah {\k25}apa {\k15}yang {\k22}tidak
+Dialogue: 0,0:00:18.27,0:00:21.02,Karaoke,,0,0,0,,{\k20}Anda {\k47}lihat {\k46}Kekayaan {\k26}adalah
+Dialogue: 0,0:00:20.52,0:00:21.89,Karaoke,,0,0,0,,{\k26}mobil {\k27}mewah {\k13}yang {\k20}tidak
+Dialogue: 0,0:00:21.39,0:00:23.36,Karaoke,,0,0,0,,{\k17}Anda {\k41}beli {\k32}jam {\k23}tangan
+Dialogue: 0,0:00:22.86,0:00:24.53,Karaoke,,0,0,0,,{\k27}mahal {\k12}yang {\k18}Anda {\k58}lewatkan
+Dialogue: 0,0:00:24.32,0:00:25.98,Karaoke,,0,0,0,,{\k22}dan {\k46}kebebasan {\k30}waktu {\k17}yang
+Dialogue: 0,0:00:25.48,0:00:28.71,Karaoke,,0,0,0,,{\k23}Anda {\k58}miliki {\k52}Berhentilah {\k53}membelanjakan
+Dialogue: 0,0:00:28.21,0:00:29.47,Karaoke,,0,0,0,,{\k26}uang {\k13}yang {\k17}belum {\k18}Anda
+Dialogue: 0,0:00:28.97,0:00:31.17,Karaoke,,0,0,0,,{\k51}hasilkan {\k22}untuk {\k46}mengesankan {\k50}orang-orang
+Dialogue: 0,0:00:30.67,0:00:32.10,Karaoke,,0,0,0,,{\k16}yang {\k35}bahkan {\k22}tidak {\k18}Anda
+Dialogue: 0,0:00:31.60,0:00:34.45,Karaoke,,0,0,0,,{\k53}sukai {\k55}Subscribe {\k20}untuk {\k22}mulai
+Dialogue: 0,0:00:33.95,0:00:35.91,Karaoke,,0,0,0,,{\k38}membangun {\k47}kekayaan {\k42}sejati {\k17}hari
+Dialogue: 0,0:00:35.41,0:00:36.33,Karaoke,,0,0,0,,{\k42}ini

@@ -137,7 +137,11 @@ async function main() {
     while (true) {
         try {
             console.log('\n--- SIKLUS BARU ---');
-            console.log('⏰', new Date().toLocaleString('id-ID'));
+            if (process.env.SINGLE_RUN === 'true') {
+                console.log('🚀 Single Run Mode detected (GitHub Actions).');
+            } else {
+                console.log('⏰', new Date().toLocaleString('id-ID'));
+            }
 
             await ensureDirectories();
 
@@ -248,6 +252,11 @@ async function main() {
         console.log(`\n😴 Menunggu ${intervalHours} jam untuk siklus berikutnya...`);
         await updateBotStatus('SLEEPING', { next_run: new Date(Date.now() + intervalHours * 60 * 60 * 1000).toISOString() });
         await new Promise(resolve => setTimeout(resolve, intervalHours * 60 * 60 * 1000));
+        if (process.env.SINGLE_RUN === 'true') {
+            console.log('✅ Single run complete. Exiting.');
+            process.exit(0);
+        }
+
         await updateBotStatus('RUNNING');
     }
 }
