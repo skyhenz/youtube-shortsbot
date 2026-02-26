@@ -31,7 +31,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
 
       - name: Install FFmpeg
         run: |
@@ -39,7 +38,7 @@ jobs:
           sudo apt-get install -y ffmpeg
 
       - name: Install Node dependencies
-        run: npm install
+        run: npm install --prefer-offline || npm install
 
       - name: Create environment file
         run: |
@@ -116,7 +115,7 @@ jobs:
             echo "ℹ️ No state changes to commit."
           else
             git commit -m "bot: update state after run $(date +'%Y-%m-%d %H:%M') [skip ci]"
-            git push origin HEAD:main
+            git push origin HEAD:master
             echo "✅ State committed to repository."
           fi
 
