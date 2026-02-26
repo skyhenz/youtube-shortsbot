@@ -84,10 +84,16 @@ async function updateStatus() {
 }
 
 async function startBot() {
-    await fetch('/api/start', {
+    const res = await fetch('/api/start', {
         method: 'POST',
         headers: { 'x-password': currentPassword }
     });
+    const data = await res.json();
+    if (data.success) {
+        alert(data.message || 'Bot started successfully!');
+    } else {
+        alert('Error: ' + (data.error || 'Failed to start bot'));
+    }
     updateStatus();
 }
 

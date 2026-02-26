@@ -1,0 +1,122 @@
+[
+  {
+    "date": "2026-01-20",
+    "videos_created": 5,
+    "uploads_success": 0,
+    "uploads_failed": 5,
+    "errors": [
+      "YouTube upload failed: No access, refresh token, API key or refresh handler callback is set.",
+      "selectedDesc is not defined",
+      "YouTube upload failed: No access, refresh token, API key or refresh handler callback is set.",
+      "Authentication failed: invalid_client",
+      "Authentication failed: invalid_client"
+    ]
+  },
+  {
+    "date": "2026-01-21",
+    "videos_created": 3,
+    "uploads_success": 1,
+    "uploads_failed": 2,
+    "errors": [
+      "Content validation failed",
+      "Content validation failed"
+    ]
+  },
+  {
+    "date": "2026-01-22",
+    "videos_created": 3,
+    "uploads_success": 3,
+    "uploads_failed": 0,
+    "errors": []
+  },
+  {
+    "date": "2026-01-23",
+    "videos_created": 3,
+    "uploads_success": 2,
+    "uploads_failed": 0,
+    "errors": []
+  },
+  {
+    "date": "2026-01-24",
+    "videos_created": 3,
+    "uploads_success": 3,
+    "uploads_failed": 0,
+    "errors": []
+  },
+  {
+    "date": "2026-01-25",
+    "videos_created": 3,
+    "uploads_success": 3,
+    "uploads_failed": 0,
+    "errors": []
+  },
+  {
+    "date": "2026-01-26",
+    "videos_created": 5,
+    "uploads_success": 4,
+    "uploads_failed": 1,
+    "errors": [
+      "Limits reached"
+    ]
+  },
+  {
+    "date": "2026-01-27",
+    "videos_created": 3,
+    "uploads_success": 3,
+    "uploads_failed": 0,
+    "errors": []
+  },
+  {
+    "date": "2026-01-28",
+    "videos_created": 2,
+    "uploads_success": 1,
+    "uploads_failed": 1,
+    "errors": [
+      "Authentication failed: invalid_grant"
+    ]
+  },
+  {
+    "date": "2026-01-29",
+    "videos_created": 5,
+    "uploads_success": 4,
+    "uploads_failed": 1,
+    "errors": [
+      "Authentication failed: invalid_grant"
+    ]
+  },
+  {
+    "date": "2026-01-30",
+    "videos_created": 1,
+    "uploads_success": 1,
+    "uploads_failed": 0,
+    "errors": []
+  },
+  {
+    "date": "2026-02-01",
+    "videos_created": 2,
+    "uploads_success": 2,
+    "uploads_failed": 0,
+    "errors": []
+  },
+  {
+    "date": "2026-02-02",
+    "videos_created": 1,
+    "uploads_success": 1,
+    "uploads_failed": 0,
+    "errors": []
+  },
+  {
+    "date": "2026-02-03",
+    "videos_created": 1,
+    "uploads_success": 1,
+    "uploads_failed": 0,
+    "errors": []
+  },
+  {
+    "date": "2026-02-04",
+    "videos_created": 1,
+    "uploads_success": 1,
+    "uploads_failed": 0,
+    "errors": []
+  }
+]

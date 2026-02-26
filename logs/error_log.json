@@ -1,0 +1,65 @@
+[
+  {
+    "timestamp": "2026-01-20T13:43:44.233Z",
+    "package": "paket_konten_001.md",
+    "errors": [
+      "YouTube upload failed: No access, refresh token, API key or refresh handler callback is set."
+    ]
+  },
+  {
+    "timestamp": "2026-01-20T14:00:36.137Z",
+    "package": "paket_konten_002.md",
+    "errors": [
+      "selectedDesc is not defined"
+    ]
+  },
+  {
+    "timestamp": "2026-01-20T14:03:51.227Z",
+    "package": "paket_konten_003.md",
+    "errors": [
+      "YouTube upload failed: No access, refresh token, API key or refresh handler callback is set."
+    ]
+  },
+  {
+    "timestamp": "2026-01-20T14:22:04.591Z",
+    "package": "paket_konten_004.md",
+    "errors": [
+      "Authentication failed: invalid_client"
+    ]
+  },
+  {
+    "timestamp": "2026-01-20T14:23:37.511Z",
+    "package": "paket_konten_005.md",
+    "errors": [
+      "Authentication failed: invalid_client"
+    ]
+  },
+  {
+    "timestamp": "2026-01-21T06:29:42.789Z",
+    "package": "paket_konten_006.md",
+    "errors": [
+      "Video duration too short (< 10 seconds)"
+    ]
+  },
+  {
+    "timestamp": "2026-01-21T07:14:02.768Z",
+    "package": "paket_konten_007.md",
+    "errors": [
+      "Video duration too short (< 10 seconds)"
+    ]
+  },
+  {
+    "timestamp": "2026-01-28T23:11:56.140Z",
+    "package": "paket_konten_021.md",
+    "errors": [
+      "Authentication failed: invalid_grant"
+    ]
+  },
+  {
+    "timestamp": "2026-01-29T07:59:35.537Z",
+    "package": "paket_konten_021.md",
+    "errors": [
+      "Authentication failed: invalid_grant"
+    ]
+  }
+]

@@ -4,6 +4,7 @@ import path from 'path';
 import fs from 'fs/promises';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
+import axios from 'axios';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -77,9 +78,43 @@ app.get('/api/status', auth, async (req, res) => {
     });
 });
 
-app.post('/api/start', auth, (req, res) => {
+app.post('/api/start', auth, async (req, res) => {
+    // If GitHub credentials are provided, trigger GitHub Actions instead of local process
+    if (process.env.GITHUB_TOKEN && process.env.GITHUB_OWNER && process.env.GITHUB_REPO) {
+        try {
+            const githubUrl = `https://api.github.com/repos/${process.env.GITHUB_OWNER}/${process.env.GITHUB_REPO}/actions/workflows/auto-upload.yml/dispatches`;
+
+            const response = await axios.post(githubUrl,
+                { ref: 'main' },
+                {
+                    headers: {
+                        'Authorization': `Bearer ${process.env.GITHUB_TOKEN}`,
+                        'Accept': 'application/vnd.github+json',
+                        'X-GitHub-Api-Version': '2022-11-28'
+                    }
+                }
+            );
+
+            if (response.status === 204 || response.status === 200 || response.status === 201) {
+                return res.json({ success: true, message: 'GitHub Action triggered successfully' });
+            } else {
+                return res.status(response.status).json({
+                    error: 'Failed to trigger GitHub Action',
+                    details: response.data
+                });
+            }
+        } catch (error) {
+            return res.status(500).json({
+                error: 'Server error while triggering GitHub',
+                message: error.message,
+                details: error.response?.data
+            });
+        }
+    }
+
+    // Fallback to local process (legacy behavior)
     if (botProcess) {
-        return res.status(400).json({ error: 'Bot already running' });
+        return res.status(400).json({ error: 'Bot already running locally' });
     }
 
     botProcess = spawn('node', ['index.js'], {
@@ -91,7 +126,7 @@ app.post('/api/start', auth, (req, res) => {
         botProcess = null;
     });
 
-    res.json({ success: true });
+    res.json({ success: true, message: 'Bot started locally' });
 });
 
 app.post('/api/stop', auth, (req, res) => {
