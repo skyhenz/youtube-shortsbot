@@ -4,6 +4,22 @@ output/*.mp4
 output/*.mp3
 output/*.png
 output/*.txt
-logs/*.json
+output/*.jpg
+output/*.ass
+
+# Ignore temp assets
+assets/temp_bg/
+
+# Ignore local auth tokens (NEVER commit these)
+config/token.json
+
+# Ignore raw log files but KEEP json logs for state tracking
 *.log
+
+# Keep these tracked for bot state:
+# logs/processed.json     -> bot memory of what's been uploaded
+# logs/upload_log_*.json  -> upload history
+# logs/quota_tracker.json -> daily quota
+# logs/bot_status.json    -> current status
+# paket_konten/           -> content packages
 .DS_Store

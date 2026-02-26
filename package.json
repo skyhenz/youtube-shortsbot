@@ -9,8 +9,10 @@
     "generate": "node index.js generate",
     "upload": "node index.js upload",
     "process": "node index.js",
+    "generate-batch": "node scripts/generate_content_batch.js",
     "status": "node scripts/check_updates.js",
     "clean": "node scripts/cleanup.js",
+    "setup-auth": "node setup_auth.js",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "keywords": [
