@@ -5,27 +5,20 @@ on:
     # Run at 07:00, 15:00, 23:00 WIB (00:00, 08:00, 16:00 UTC)
     - cron: "0 0,8,16 * * *"
   workflow_dispatch:
-    inputs:
-      generate_content:
-        description: "Generate new content batch before running? (true/false)"
-        required: false
-        default: "false"
 
-# Required so the workflow can commit back to the repo
 permissions:
   contents: write
 
 jobs:
-  generate-and-upload:
+  upload:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 25
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -33,96 +26,41 @@ jobs:
           node-version: "20"
 
       - name: Install FFmpeg
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
 
       - name: Install Node dependencies
-        run: npm install --prefer-offline || npm install
+        run: npm install
 
-      - name: Create environment file
+      - name: Create .env file
         run: |
           echo "YOUTUBE_CLIENT_ID=${{ secrets.YOUTUBE_CLIENT_ID }}" > .env
           echo "YOUTUBE_CLIENT_SECRET=${{ secrets.YOUTUBE_CLIENT_SECRET }}" >> .env
           echo "YOUTUBE_REFRESH_TOKEN=${{ secrets.YOUTUBE_REFRESH_TOKEN }}" >> .env
-          echo "YOUTUBE_CHANNEL_ID=${{ secrets.YOUTUBE_CHANNEL_ID }}" >> .env
           echo "PEXELS_API_KEY=${{ secrets.PEXELS_API_KEY }}" >> .env
           echo "AUTO_UPLOAD=true" >> .env
           echo "UPLOAD_PRIVACY=public" >> .env
           echo "SINGLE_RUN=true" >> .env
           echo "MODE_TEST=false" >> .env
 
-      - name: Check remaining content packages
-        id: check_content
-        run: |
-          TOTAL=$(ls paket_konten/paket_konten_*.md 2>/dev/null | wc -l)
-          PROCESSED=$(node -e "
-            const fs = require('fs');
-            try {
-              const p = JSON.parse(fs.readFileSync('logs/processed.json','utf-8'));
-              console.log(p.length);
-            } catch { console.log(0); }
-          ")
-          REMAINING=$((TOTAL - PROCESSED))
-          echo "total=$TOTAL" >> $GITHUB_OUTPUT
-          echo "processed=$PROCESSED" >> $GITHUB_OUTPUT
-          echo "remaining=$REMAINING" >> $GITHUB_OUTPUT
-          echo "📦 Content packages: $TOTAL total, $PROCESSED processed, $REMAINING remaining"
+      - name: Auto-generate new content if needed
+        run: node scripts/generate_content_batch.js 5
 
-      - name: Generate new content if running low or manually triggered
-        if: steps.check_content.outputs.remaining < 3 || github.event.inputs.generate_content == 'true'
-        run: |
-          echo "⚙️ Generating new content batch..."
-          node scripts/generate_content_batch.js 8
-          echo "✅ New content packages generated"
-
-      - name: Run bot (single cycle)
-        id: run_bot
-        run: |
-          node index.js
+      - name: Run bot
+        run: node index.js
         continue-on-error: true
 
-      - name: Check bot result
-        run: |
-          if [ -f "logs/bot_status.json" ]; then
-            STATUS=$(node -e "
-              const fs = require('fs');
-              const s = JSON.parse(fs.readFileSync('logs/bot_status.json','utf-8'));
-              console.log(s.status);
-            ")
-            echo "🤖 Bot status: $STATUS"
-          fi
-          if [ -f "logs/upload_failed.log" ]; then
-            echo "⚠️ Failed uploads:"
-            tail -5 logs/upload_failed.log || true
-          fi
-
-      - name: Commit state back to repository
+      - name: Save state to repository
         if: always()
         run: |
           git config --local user.email "bot@github-actions.com"
-          git config --local user.name "YouTube Bot Action"
+          git config --local user.name "YouTube Bot"
+          git add logs/ paket_konten/ || true
+          git diff --staged --quiet || git commit -m "bot: update state [skip ci]" && git push origin master || true
 
-          # Stage all important state files
-          git add logs/processed.json logs/bot_status.json 2>/dev/null || true
-          git add "logs/upload_log_*.json" 2>/dev/null || true
-          git add logs/quota_tracker.json 2>/dev/null || true
-          git add logs/health_check.json 2>/dev/null || true
-          git add paket_konten/ 2>/dev/null || true
-
-          # Only commit if there are actual changes
-          if git diff --staged --quiet; then
-            echo "ℹ️ No state changes to commit."
-          else
-            git commit -m "bot: update state after run $(date +'%Y-%m-%d %H:%M') [skip ci]"
-            git push origin HEAD:master
-            echo "✅ State committed to repository."
-          fi
-
-      - name: Upload logs as artifact
+      - name: Upload logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: bot-logs-run-${{ github.run_number }}
+          name: logs-${{ github.run_number }}
           path: logs/
-          retention-days: 14
+          retention-days: 7
