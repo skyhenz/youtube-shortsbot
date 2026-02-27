@@ -248,14 +248,16 @@ async function main() {
             break;
         }
 
-        const intervalHours = config.upload.intervalHours;
-        console.log(`\n😴 Menunggu ${intervalHours} jam untuk siklus berikutnya...`);
-        await updateBotStatus('SLEEPING', { next_run: new Date(Date.now() + intervalHours * 60 * 60 * 1000).toISOString() });
-        await new Promise(resolve => setTimeout(resolve, intervalHours * 60 * 60 * 1000));
+        // Exit immediately if running in GitHub Actions (single run mode)
         if (process.env.SINGLE_RUN === 'true') {
             console.log('✅ Single run complete. Exiting.');
             process.exit(0);
         }
+
+        const intervalHours = config.upload.intervalHours;
+        console.log(`\n😴 Menunggu ${intervalHours} jam untuk siklus berikutnya...`);
+        await updateBotStatus('SLEEPING', { next_run: new Date(Date.now() + intervalHours * 60 * 60 * 1000).toISOString() });
+        await new Promise(resolve => setTimeout(resolve, intervalHours * 60 * 60 * 1000));
 
         await updateBotStatus('RUNNING');
     }
