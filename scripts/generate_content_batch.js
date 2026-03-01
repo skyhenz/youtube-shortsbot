@@ -12,34 +12,34 @@ const __dirname = path.dirname(__filename);
 
 const TOPIC_POOL = [
     {
-        // TYPE: Pattern Breaker (Insider Tone)
-        topic: 'Alasan Kenapa Kamu Selalu Gagal Membaca Orang',
-        narration: 'Ini biasanya cuma dibahas di lingkaran intelijen tertentu. Kebanyakan orang pikir bahasa tubuh itu soal mata dan tangan. Padahal, ada sinyal mikro yang lebih jujur. Setelah ngelihat ratusan kasus, polanya selalu sama—kamu cuma ngelihat apa yang ingin kamu lihat. Bagian ini sengaja saya lewati karena terlalu teknis untuk publik. Kalau kamu tahu, kamu tahu.',
-        screenTexts: ['LINGKARAN INTELIJEN', 'MIKRO-SINYAL JUJUR', '100+ KASUSNYA', 'POLA SELALU SAMA', 'SELEKTIF REVEAL', 'YANG PAHAM SAJA', 'SYARAT AUTHORITY']
+        // TYPE: Pattern Recognition (Insider Tone)
+        topic: 'Decision Awareness: Sinyal Mikro di Balik Pilihan Fatal',
+        narration: 'Ini biasanya cuma dibahas di lingkaran intelijen tertentu. Kebanyakan orang pikir pilihan diambil secara sadar. Padahal, ada arsitektur pattern recognition yang mendikte otakmu. Setelah ngelihat ratusan kasus, polanya selalu sama. Ini pengamatan berulang, bukan teori. Bagian ini memang tidak dibuka di publik. Kamu bukan kebanyakan orang.',
+        screenTexts: ['DECISION AWARENESS', 'STRUKTUR PILIHAN', '100+ KASUSNYA', 'PATTERN RECOGNITION', 'BUKAN TEORI', 'INSIDER ONLY', 'YANG PAHAM TAHU']
     },
     {
-        // TYPE: Authority Reminder (Experience Signal)
-        topic: 'Pola Psikologi di Balik Manipulasi Tingkat Tinggi',
-        narration: 'Orang yang paham ini jarang sekali ngomong di publik. Polanya bukan soal apa yang dikatakan, tapi soal jeda antara kata-kata. Saya sudah perhatikan ini bertahun-tahun di level profesional. Ini biasanya jadi rahasia paling dijaga di atas rata-rata. Yang paham biasanya sudah melangkah lebih jauh.',
-        screenTexts: ['RAHASIA PUBLIK', 'JEDA ANTAR KATA', 'RISET TAHUNAN', 'LEVEL PROFESIONAL', 'RAHASIA DIJAGA', 'DI ATAS RATA-RATA', 'MELANGKAH JAUH']
+        // TYPE: Clarity Escalation (Experience Signal)
+        topic: 'Strategi Berpikir: Membedakan Noise dari Signal',
+        narration: 'Orang yang paham ini jarang sekali ngomong di publik. Clarity sejati bukan soal menambah informasi, tapi soal eliminasi noise. Pola ini sering muncul di kasus nyata pada level profesional. Saya sudah perhatikan struktur ini bertahun-tahun. Bagian teknisnya sengaja saya lewati. Kalau kamu sampai sini, kamu tahu kenapa.',
+        screenTexts: ['STRATEGI BERPIKIR', 'CLARITY SEJATI', 'ELIMINASI NOISE', 'STRUKTUR NYATA', 'LEVEL PROFESIONAL', 'REVEAL SELEKTIF', 'MELANGKAH JAUH']
     },
     {
-        // TYPE: Soft Escalation (Selective Reveal)
-        topic: 'Kenapa Kamu Merasa Mengenal Seseorang, Padahal Tidak',
-        narration: 'Efek proyeksi ini sangat berbahaya jika kamu tidak tahu cara mematikannya. Setelah mengamati ribuan interaksi sosial, hanya sedikit yang benar-benar sadar sedang terjebak. Ini level lanjutan yang belum bisa dibahas sekarang karena butuh pemahaman dasar yang kuat. Kalau kamu tahu, kamu tahu.',
-        screenTexts: ['EFEK PROYEKSI', 'BERBAHAYA!', '1000+ INTERAKSI', 'TERJEBAK PIKIRAN', 'LEVEL LANJUTAN', 'PEMAHAMAN DASAR', 'SYARAT MENGERTI']
+        // TYPE: Selective Reveal (Silent Path)
+        topic: 'Strategic Thinking: Mengapa Logika Sering Menipu',
+        narration: 'Logika seringkali hanyalah topeng untuk bias yang tidak disadari. Setelah mengamati ribuan interaksi, polanya selalu konsisten: otak mencari konfirmasi, bukan kebenaran. Ini level lanjutan untuk mencapai decision awareness yang belum bisa dibahas sekarang. Yang paham biasanya sudah tahu.',
+        screenTexts: ['LOGIKA MENIPU', 'BIAS TAK DISADARI', '1000+ INTERAKSI', 'KONSISTENSI EKSTRIM', 'LEVEL LANJUTAN', 'DECISION AWARENESS', 'TUNGGU SAJA']
     },
     {
-        // TYPE: Pattern Breaker (Authority Signal)
-        topic: 'Mitos Terbesar Tentang Produktivitas yang Kamu Percaya',
-        narration: 'Apa yang diajarkan buku-buku populer itu biasanya cuma permukaan. Di tingkat yang lebih tinggi, produktivitas bukan soal manajemen waktu, tapi soal proteksi energi kognitif. Pola ini selalu konsisten di antara orang-orang paling berpengaruh. Bagian bagaimana cara memulainya mungkin nanti saja. Yang paham biasanya sudah melangkah lebih jauh.',
-        screenTexts: ['PRODUKTIVITAS MITOS', 'PERMUKAAN SAJA', 'ENERGI KOGNITIF', 'KONSISTEM EKSTRIM', 'ORANG BERPENGARUH', 'LEVEL TINGGI', 'MELANGKAH JAUH']
+        // TYPE: Authority Reminder (Anchor Realitas)
+        topic: 'Pattern Recognition: Rahasia di Balik Intuisi Tajam',
+        narration: 'Intuisi bukan bakat, tapi kemampuan pattern recognition yang dilatih. Di tingkat yang lebih tinggi, ini soal memetakan arsitektur pikiran orang lain. Pola ini selalu muncul di kasus nyata tanpa kecuali. Bagian bagaimana cara memulainya memang tidak dibuka di publik. Kamu bukan kebanyakan orang.',
+        screenTexts: ['INTUISI TAJAM', 'PATTERN RECOGNITION', 'ARSITEKTUR PIKIRAN', 'BUKAN BAKAT!', 'KASUS NYATA', 'INSIDER SIGNAL', 'YANG TAHU TAHU']
     },
     {
-        // TYPE: Authority Reminder (Insider Tone)
-        topic: 'Rahasia Gelap di Balik Persuasi yang Tidak Pernah Diajarkan',
-        narration: 'Ini biasanya cuma dibahas di balik pintu tertutup. Persuasi sejati tidak butuh argumen, hanya butuh arsitektur pilihan. Setelah bertahun-tahun menganalisis struktur ini, saya sadar kebanyakan orang adalah korban tanpa sadar. Ini biasanya jadi rahasia lingkaran tertentu. Kalau kamu tahu, kamu tahu.',
-        screenTexts: ['PINTU TERTUTUP', 'PERSUASI SEJATI', 'ARSITEKTUR PILIHAN', 'STRUKTUR ANALISIS', 'KORBAN TANPA SADAR', 'RAHASIA LINGKARAN', 'YANG TAHU TAHU']
+        // TYPE: Strategic Awareness (Insider Tone)
+        topic: 'Decision Architecture: Mengapa Kamu Tidak Pernah Benar-Benar Memilih',
+        narration: 'Ini rahasia yang biasanya cuma dibahas di balik pintu tertutup. Setiap pilihanmu sudah dirancang oleh arsitektur yang tidak kamu lihat. Setelah bertahun-tahun menganalisis struktur ini, polanya sangat jelas. Ini pengamatan berulang, bukan teori. Kalau kamu sampai sini, kamu bukan kebanyakan orang.',
+        screenTexts: ['DECISION ARCHITECTURE', 'Bukan Pilihanmu!', 'PINTU TERTUTUP', 'STRUKTUR TERSEMBUNYI', 'BUKAN TEORI', 'PIKIRAN TERDIKTE', 'BACA BIO.']
     }
 ];
 
