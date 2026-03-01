@@ -12,29 +12,34 @@ const __dirname = path.dirname(__filename);
 
 const TOPIC_POOL = [
     {
-        topic: 'Dark Psychology: Rahasia Pupil Mata yang Jarang Orang Sadar',
-        narration: 'TATAP MATANYA SEKARANG! Jika pupilnya membesar, dia mungkin sangat tertarik atau sedang berbohong hebat. Tapi tunggu—di sinilah orang salah paham. Riset menunjukkan pupil juga membesar saat otak bekerja terlalu keras menahan rahasia. Perhatikan grafik ini... Inilah bahaya besar menyepelekan bahasa tubuh. Otakmu baru sadar ini setelah kamu ulang dari awal—perhatikan 3 detik pertama.',
-        screenTexts: ['TATAP MATANYA!', 'PUPIL MEMBESAR?', 'BAHAYA BOHONG', 'RISET MEMBUKTIKAN', 'SALAH PAHAM!', 'OTAKMU KERJA KERAS', 'LIHAT 3 DETIK AWAL']
+        // TYPE: Pattern Breaker (Insider Tone)
+        topic: 'Alasan Kenapa Kamu Selalu Gagal Membaca Orang',
+        narration: 'Ini biasanya cuma dibahas di lingkaran intelijen tertentu. Kebanyakan orang pikir bahasa tubuh itu soal mata dan tangan. Padahal, ada sinyal mikro yang lebih jujur. Setelah ngelihat ratusan kasus, polanya selalu sama—kamu cuma ngelihat apa yang ingin kamu lihat. Bagian ini sengaja saya lewati karena terlalu teknis untuk publik. Kalau kamu tahu, kamu tahu.',
+        screenTexts: ['LINGKARAN INTELIJEN', 'MIKRO-SINYAL JUJUR', '100+ KASUSNYA', 'POLA SELALU SAMA', 'SELEKTIF REVEAL', 'YANG PAHAM SAJA', 'SYARAT AUTHORITY']
     },
     {
-        topic: 'Sunk Cost Fallacy: Kenapa Kamu Dipaksa Rugi Selamanya',
-        narration: 'HUBUNGANMU TOXIC TAPI KAMU TETAP BERTAHAN? Ini bukan setia, ini adalah kerusakan logika. Tapi yang jarang orang bahas... otakmu lebih takut kehilangan apa yang sudah hilang daripada mendapatkan masa depan. Lihat data statistik ini... Inilah alasan kenapa kamu rugi selamanya jika tidak berhenti sekarang. Sekarang tonton lagi—sadari bagaimana kamu tertipu sejak awal.',
-        screenTexts: ['HUBUNGAN TOXIC?', 'KERUSAKAN LOGIKA', 'JARANG DIBAHAS', 'STATISTIK KERUGIAN', 'STOP SEKARANG!', 'JANGAN MAU RUGI', 'TONTON LAGI DEH!']
+        // TYPE: Authority Reminder (Experience Signal)
+        topic: 'Pola Psikologi di Balik Manipulasi Tingkat Tinggi',
+        narration: 'Orang yang paham ini jarang sekali ngomong di publik. Polanya bukan soal apa yang dikatakan, tapi soal jeda antara kata-kata. Saya sudah perhatikan ini bertahun-tahun di level profesional. Ini biasanya jadi rahasia paling dijaga di atas rata-rata. Yang paham biasanya sudah melangkah lebih jauh.',
+        screenTexts: ['RAHASIA PUBLIK', 'JEDA ANTAR KATA', 'RISET TAHUNAN', 'LEVEL PROFESIONAL', 'RAHASIA DIJAGA', 'DI ATAS RATA-RATA', 'MELANGKAH JAUH']
     },
     {
-        topic: 'Confirmation Bias: Penjara Pikiran yang Membunuh Objektivitas',
-        narration: 'OTAKMU SEDANG MENIPUMU SEKARANG JUGA! Kamu hanya mau dengar apa yang ingin kamu dengar. Tunggu—ini bagian yang paling berbahaya. Kamu merasa paling benar, padahal kamu cuma di dalam penjara pikiranmu sendiri. Perhatikan kutipan riset ini... Inilah alasan kenapa dunia pecah sekarang. Otakmu baru sadar ini setelah kamu tonton ulang.',
-        screenTexts: ['OTAKMU MENIPU!', 'HANYA MAU BENAR', 'BAGIAN BERBAHAYA', 'PENJARA PIKIRAN', 'DUNIA PECAH!', 'OBJEKTIVITAS MATI', 'TONTON ULANG!']
+        // TYPE: Soft Escalation (Selective Reveal)
+        topic: 'Kenapa Kamu Merasa Mengenal Seseorang, Padahal Tidak',
+        narration: 'Efek proyeksi ini sangat berbahaya jika kamu tidak tahu cara mematikannya. Setelah mengamati ribuan interaksi sosial, hanya sedikit yang benar-benar sadar sedang terjebak. Ini level lanjutan yang belum bisa dibahas sekarang karena butuh pemahaman dasar yang kuat. Kalau kamu tahu, kamu tahu.',
+        screenTexts: ['EFEK PROYEKSI', 'BERBAHAYA!', '1000+ INTERAKSI', 'TERJEBAK PIKIRAN', 'LEVEL LANJUTAN', 'PEMAHAMAN DASAR', 'SYARAT MENGERTI']
     },
     {
-        topic: 'Halo Effect: Jebakan Wajah Cantik yang Menipu Otak',
-        narration: 'JANGAN PERCAYA WAJAH CANTIK ATAU TAMPAN! Ini bukan soal selera, tapi soal cacat mental evolusi. Tapi di sinilah orang salah paham... kita menganggap orang menarik itu jujur tanpa bukti. Lihat eksperimen sosial ini... Inilah bahaya besar Efek Halo bagi hidupmu. Sekarang coba tonton lagi dari awal—perhatikan 3 detik pertama.',
-        screenTexts: ['JANGAN PERCAYA!', 'CACAT MENTAL', 'SALAH PAHAM!', 'EKSPERIMEN SOSIAL', 'EFEK HALO BAHAYA', 'HIDUPMU TERANCAM', 'CEK 3 DETIK AWAL']
+        // TYPE: Pattern Breaker (Authority Signal)
+        topic: 'Mitos Terbesar Tentang Produktivitas yang Kamu Percaya',
+        narration: 'Apa yang diajarkan buku-buku populer itu biasanya cuma permukaan. Di tingkat yang lebih tinggi, produktivitas bukan soal manajemen waktu, tapi soal proteksi energi kognitif. Pola ini selalu konsisten di antara orang-orang paling berpengaruh. Bagian bagaimana cara memulainya mungkin nanti saja. Yang paham biasanya sudah melangkah lebih jauh.',
+        screenTexts: ['PRODUKTIVITAS MITOS', 'PERMUKAAN SAJA', 'ENERGI KOGNITIF', 'KONSISTEM EKSTRIM', 'ORANG BERPENGARUH', 'LEVEL TINGGI', 'MELANGKAH JAUH']
     },
     {
-        topic: 'Dunning-Kruger Effect: Kenapa Orang Bodoh Merasa Paling Pintar',
-        narration: 'KAMU PASTI PERNAH KETEMU ORANG INI! Mereka bicara paling keras tapi paling tidak tahu apa-apa. Tunggu—di sinilah bagian yang paling aneh. Semakin bodoh seseorang, semakin mereka merasa sudah ahli di segalanya. Perhatikan grafik kompetensi ini... Inilah alasan kenapa debat itu sia-sia. Otakmu baru sadar ini setelah kamu ulang video ini.',
-        screenTexts: ['KETEMU ORANG INI?', 'PALING KERAS!', 'BAGIAN ANEH', 'GRAFIK KOMPETENSI', 'DEBAT ITU SIA-SIA', 'SADARI SEKARANG', 'ULANG VIDEO INI']
+        // TYPE: Authority Reminder (Insider Tone)
+        topic: 'Rahasia Gelap di Balik Persuasi yang Tidak Pernah Diajarkan',
+        narration: 'Ini biasanya cuma dibahas di balik pintu tertutup. Persuasi sejati tidak butuh argumen, hanya butuh arsitektur pilihan. Setelah bertahun-tahun menganalisis struktur ini, saya sadar kebanyakan orang adalah korban tanpa sadar. Ini biasanya jadi rahasia lingkaran tertentu. Kalau kamu tahu, kamu tahu.',
+        screenTexts: ['PINTU TERTUTUP', 'PERSUASI SEJATI', 'ARSITEKTUR PILIHAN', 'STRUKTUR ANALISIS', 'KORBAN TANPA SADAR', 'RAHASIA LINGKARAN', 'YANG TAHU TAHU']
     }
 ];
 
@@ -50,14 +55,6 @@ async function getNextNumber() {
 
 async function generateBatch(count = 5) {
     await fs.mkdir(contentDir, { recursive: true });
-
-    // Get processed log to avoid duplicate topics
-    let usedTopics = [];
-    try {
-        const processedFile = path.join(contentDir, '..', 'logs', 'processed.json');
-        const data = await fs.readFile(processedFile, 'utf-8');
-        usedTopics = JSON.parse(data);
-    } catch { }
 
     let nextNum = await getNextNumber();
     let generated = 0;
@@ -78,19 +75,10 @@ async function generateBatch(count = 5) {
             continue;
         } catch { }
 
-        const ctaOptions = [
-            'Follow untuk fakta menarik lainnya!',
-            'Subscribe untuk ilmu terbaik!',
-            'Simpan video ini agar tidak lupa!',
-            'Share ke temanmu yang perlu tau ini!',
-            'Komentar jika kamu sudah tau ini!'
-        ];
-        const cta = ctaOptions[Math.floor(Math.random() * ctaOptions.length)];
-        const fullNarration = item.narration.trimEnd().endsWith('!')
-            ? item.narration
-            : `${item.narration} ${cta}`;
+        // ❌ SILENT PATH MONETIZATION: No explicit CTAs. The narration itself is the authority builder.
+        const fullNarration = item.narration.trim();
 
-        const content = `# PAKET KONTEN AUTO #${String(nextNum).padStart(3, '0')}
+        const content = `# PAKET AUTHORITY #${String(nextNum).padStart(3, '0')}
 
 ## TOPIK
 ${item.topic}
@@ -99,26 +87,27 @@ ${item.topic}
 ${fullNarration}
 
 ## TEKS LAYAR
-${item.screenTexts.map((t, i) => `${i + 1}. ${t}`).join('\n')}
+${item.screenTexts.map((t, i) => `${i + 1}. ${t.toUpperCase()}`).join('\n')}
 
 ## GAYA VISUAL
-- Gradasi (#0D0D0D ke #1A1A2E)
-- Mode: Dark, Premium, Cinematic
-- Keywords: psychology facts cinematic dramatic
+- Minimalist, Professional, Evidence-based
+- Mode: Dark, Cinematic, Premium
+- Keywords: minimalist abstract background data visualization evidence
+- Color: Deep Black (#080808) & Steel Blue (#1E272E)
 
 ## DESKRIPSI VIDEO
 ${item.narration}
 
-#psikologi #fakta #shorts #edukasi #viral #indonesia
+#authority #psychology #monetization #shorts #indonesia #professional
 `;
 
         await fs.writeFile(filepath, content, 'utf-8');
-        console.log(`✅ Generated: ${filename}`);
+        console.log(`✅ Authority Content Generated: ${filename}`);
         nextNum++;
         generated++;
     }
 
-    console.log(`\n📦 Total ${generated} paket konten baru berhasil di-generate.`);
+    console.log(`\n📦 Total ${generated} paket otoritas baru berhasil di-generate.`);
     return generated;
 }
 
