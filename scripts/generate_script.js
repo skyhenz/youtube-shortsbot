@@ -89,30 +89,10 @@ export default async function generateScript(contentPackagePath) {
 
     scriptData.narration = narrationLines.filter(l => l).join(' ');
 
-    // Load CTA list and select one randomly (unless already provided)
-    const ctaList = JSON.parse(await fs.readFile(path.join(process.cwd(), 'config', 'cta_list.json'), 'utf-8'));
-    const selectedCTA = ctaList[Math.floor(Math.random() * ctaList.length)];
-
-    if (scriptData.narration.toLowerCase().includes('subscribe') || scriptData.narration.toLowerCase().includes('follow')) {
-        console.log('ℹ️ Script already contains CTA, skipping auto-injection.');
-        // Extract the last sentence if it looks like a CTA
-        const sentences = scriptData.narration.split(/(?<=[.!?])\s+/);
-        scriptData.selectedCTA = sentences[sentences.length - 1];
-    } else {
-        scriptData.selectedCTA = selectedCTA;
-        // Growth Hack: Seamless Loop CTA Integration
-        if (scriptData.narration.endsWith('...')) {
-            const sentences = scriptData.narration.split(/(?<=[.!?])\s+/);
-            if (sentences.length > 2) {
-                const lastPhrase = sentences.pop();
-                scriptData.narration = `${sentences.join(' ')} ${selectedCTA} ${lastPhrase}`.trim();
-            } else {
-                scriptData.narration = `${selectedCTA} ${scriptData.narration}`.trim();
-            }
-        } else {
-            scriptData.narration = `${scriptData.narration} ${selectedCTA}`.trim();
-        }
-    }
+    // ❌ ALGORITHM RULE: No explicit CTAs like "Subscribe/Follow"
+    // We only keep the psychological loop ending.
+    scriptData.selectedCTA = ""; // Clear visual CTA
+    console.log('🤫 Algorithm Mode: Explicit CTA suppressed for maximum retention.');
 
     scriptData.screenTexts = screenTextLines;
     scriptData.description = descriptionLines.join('\n').trim();

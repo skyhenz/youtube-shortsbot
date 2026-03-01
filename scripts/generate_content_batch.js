@@ -12,29 +12,29 @@ const __dirname = path.dirname(__filename);
 
 const TOPIC_POOL = [
     {
-        topic: 'Efek Dunning-Kruger: Rahasia Kenapa Orang Bodoh Selalu Merasa Pintar',
-        narration: 'Pernah gak kamu ketemu orang yang merasa paling pintar, padahal dia paling salah? Anehnya, semakin sedikit orang tahu, semakin percaya diri mereka bicara. Ini disebut Efek Dunning-Kruger. Otak mereka kekurangan kemampuan untuk menyadari kegagalan mereka sendiri. Tapi yang jarang orang tahu, ini bisa terjadi padamu kalau kamu berhenti belajar. Jangan sampai kamu jadi "Si Paling Tahu" yang ternyata paling zonk. Sekarang coba pikirkan orang ini di sekitarmu...',
-        screenTexts: ['MAKIN BODO MAKIN PD?', 'DUNNING-KRUGER EFFECT', 'ILUSI KEPINTARAN', 'TRAP BELAJAR', 'SADARI KEBODOHANMU', 'JANGAN JADI ZONK', 'SIAPA ORANGNYA?']
+        topic: 'Dark Psychology: Rahasia Pupil Mata yang Jarang Orang Sadar',
+        narration: 'TATAP MATANYA SEKARANG! Jika pupilnya membesar, dia mungkin sangat tertarik atau sedang berbohong hebat. Tapi tunggu—di sinilah orang salah paham. Riset menunjukkan pupil juga membesar saat otak bekerja terlalu keras menahan rahasia. Perhatikan grafik ini... Inilah bahaya besar menyepelekan bahasa tubuh. Otakmu baru sadar ini setelah kamu ulang dari awal—perhatikan 3 detik pertama.',
+        screenTexts: ['TATAP MATANYA!', 'PUPIL MEMBESAR?', 'BAHAYA BOHONG', 'RISET MEMBUKTIKAN', 'SALAH PAHAM!', 'OTAKMU KERJA KERAS', 'LIHAT 3 DETIK AWAL']
     },
     {
-        topic: 'Confirmation Bias: Kenapa Kamu Selalu Benar (Meski Kamu Salah)',
-        narration: 'Hati-hati, otakmu sedang memanipulasi kamu sekarang! Kamu hanya mencari hal yang mendukung keyakinanmu dan mengabaikan fakta lainnya. Ini alasan kenapa kamu susah sekali didebat. Ini bagian paling berbahaya: kamu merasa objektif, padahal kamu cuma di dalam penjara pikiranmu sendiri. Keluar sekarang atau selamanya tertipu. Kamu yakin kamu benar? Coba tonton lagi ini...',
-        screenTexts: ['OTAKMU MANIPULATOR!', 'MAU MENANG SENDIRI?', 'PENJARA PIKIRAN', 'FAKTA VS KEYAKINAN', 'KELUAR DARI FILTER', 'JANGAN MAU TERTIPU', 'TONTON LAGI DEH!']
+        topic: 'Sunk Cost Fallacy: Kenapa Kamu Dipaksa Rugi Selamanya',
+        narration: 'HUBUNGANMU TOXIC TAPI KAMU TETAP BERTAHAN? Ini bukan setia, ini adalah kerusakan logika. Tapi yang jarang orang bahas... otakmu lebih takut kehilangan apa yang sudah hilang daripada mendapatkan masa depan. Lihat data statistik ini... Inilah alasan kenapa kamu rugi selamanya jika tidak berhenti sekarang. Sekarang tonton lagi—sadari bagaimana kamu tertipu sejak awal.',
+        screenTexts: ['HUBUNGAN TOXIC?', 'KERUSAKAN LOGIKA', 'JARANG DIBAHAS', 'STATISTIK KERUGIAN', 'STOP SEKARANG!', 'JANGAN MAU RUGI', 'TONTON LAGI DEH!']
     },
     {
-        topic: 'Halo Effect: Kenapa Kamu Tertipu Wajah Tampan & Cantik',
-        narration: 'Jangan percaya dengan wajah cantik atau tampan! Secara otomatis, otakmu menganggap orang menarik itu juga pintar dan jujur. Ini jebakan evolusi bernama Halo Effect. Kamu memaafkan kesalahan mereka karena penampilan mereka "kelihatan baik". Tapi ingat, penampilan hanyalah topeng evolusi yang menipumu habis-habisan. Masih gak percaya? Coba lihat sekelilingmu sekarang...',
-        screenTexts: ['JANGAN PERCAYA WAJAH!', 'ILUSI KETAMPANAN', 'HALO EFFECT MURAHAN', 'JEBAKAN EVOLUSI', 'PENAMPILAN ADALAH TOPENG', 'KAMU SEDANG TERTIPU?', 'LIHAT SEKITARMU!']
+        topic: 'Confirmation Bias: Penjara Pikiran yang Membunuh Objektivitas',
+        narration: 'OTAKMU SEDANG MENIPUMU SEKARANG JUGA! Kamu hanya mau dengar apa yang ingin kamu dengar. Tunggu—ini bagian yang paling berbahaya. Kamu merasa paling benar, padahal kamu cuma di dalam penjara pikiranmu sendiri. Perhatikan kutipan riset ini... Inilah alasan kenapa dunia pecah sekarang. Otakmu baru sadar ini setelah kamu tonton ulang.',
+        screenTexts: ['OTAKMU MENIPU!', 'HANYA MAU BENAR', 'BAGIAN BERBAHAYA', 'PENJARA PIKIRAN', 'DUNIA PECAH!', 'OBJEKTIVITAS MATI', 'TONTON ULANG!']
     },
     {
-        topic: 'Sunk Cost Fallacy: Kenapa Kamu Susah Move On',
-        narration: 'Kamu masih bertahan di hubungan toxic karena sudah lama pacaran? Kamu sedang terjebak Sunk Cost Fallacy! Logika otakmu salah: kamu memprioritaskan waktu yang sudah hilang, bukan masa depan yang masih bisa diselamatkan. Waktu yang sudah terbuang TIDAK AKAN PERNAH kembali. Berhenti sekarang atau rugi selamanya. Kamu mau buang waktu lagi? Coba dengar ini sekali lagi...',
-        screenTexts: ['SUSAH MOVE ON?', 'JEBAKAN SUNK COST', 'HUBUNGAN TOXIC!', 'MASALAH LOGIKA OTAK', 'WAKTU GAK KEMBALI', 'SELAMATKAN MASA DEPAN', 'DENGAR LAGI INI!']
+        topic: 'Halo Effect: Jebakan Wajah Cantik yang Menipu Otak',
+        narration: 'JANGAN PERCAYA WAJAH CANTIK ATAU TAMPAN! Ini bukan soal selera, tapi soal cacat mental evolusi. Tapi di sinilah orang salah paham... kita menganggap orang menarik itu jujur tanpa bukti. Lihat eksperimen sosial ini... Inilah bahaya besar Efek Halo bagi hidupmu. Sekarang coba tonton lagi dari awal—perhatikan 3 detik pertama.',
+        screenTexts: ['JANGAN PERCAYA!', 'CACAT MENTAL', 'SALAH PAHAM!', 'EKSPERIMEN SOSIAL', 'EFEK HALO BAHAYA', 'HIDUPMU TERANCAM', 'CEK 3 DETIK AWAL']
     },
     {
-        topic: 'Dark Psychology: Cara Membaca Pikiran Lewat Jarak Pupil Mata',
-        narration: 'Tatap matanya sekarang! Jika pupil seseorang membesar saat bicara denganmu, mereka mungkin sangat tertarik padamu atau mereka sedang berbohong dengan emosi kuat. Tapi jika pupilnya mengecil, mereka sedang menjauh secara emosional. Mata tidak bisa berbohong meski mulutnya penuh janji manis. Inilah kelemahan terbesar manusia yang jarang diketahui. Sekarang coba cek mata mereka...',
-        screenTexts: ['BACA PIKIRAN LEWAT MATA!', 'MATA TIDAK BISA BOHONG', 'PUPIL MEMBESAR = MINAT?', 'EMOSI VS LOGIKA', 'KELEMAHAN TERBESAR', 'CEK MATA MEREKA!', 'MASIH GAK PERCAYA?']
+        topic: 'Dunning-Kruger Effect: Kenapa Orang Bodoh Merasa Paling Pintar',
+        narration: 'KAMU PASTI PERNAH KETEMU ORANG INI! Mereka bicara paling keras tapi paling tidak tahu apa-apa. Tunggu—di sinilah bagian yang paling aneh. Semakin bodoh seseorang, semakin mereka merasa sudah ahli di segalanya. Perhatikan grafik kompetensi ini... Inilah alasan kenapa debat itu sia-sia. Otakmu baru sadar ini setelah kamu ulang video ini.',
+        screenTexts: ['KETEMU ORANG INI?', 'PALING KERAS!', 'BAGIAN ANEH', 'GRAFIK KOMPETENSI', 'DEBAT ITU SIA-SIA', 'SADARI SEKARANG', 'ULANG VIDEO INI']
     }
 ];
 

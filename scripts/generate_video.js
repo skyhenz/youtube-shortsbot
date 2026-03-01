@@ -22,311 +22,112 @@ export default async function generateVideo(scriptData, audioFile) {
   const topicSlug = scriptData.topic.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '');
   const outputFile = path.join('output', `${timestamp}_${topicSlug}.mp4`);
 
-  // 1. Get exact audio duration or set default for Visual-Only
-  let audioDuration = 0;
-  if (scriptData.narration === 'none') {
-    audioDuration = 15; // Default 15s for visual-only shorts
-    console.log('🎬 Visual-Only Mode: Setting default duration to 15s');
-  } else {
-    audioDuration = await getAudioDuration(path.resolve(audioFile));
-  }
-  const TOTAL_DURATION = audioDuration;
-  console.log(`⏱️  Target duration: ${TOTAL_DURATION.toFixed(2)}s`);
+  // 1. Durations & Basics
+  const audioDuration = await getAudioDuration(path.resolve(audioFile));
+  const sceneCount = scriptData.screenTexts.length;
+  const timePerSegment = 2.0; // Enforce Algorithmic Pacing
+  const TOTAL_DURATION = Math.min(audioDuration, sceneCount * timePerSegment);
+  console.log(`⏱️ Algorithmic Target: ${TOTAL_DURATION.toFixed(2)}s | ${sceneCount} Flash-Cuts`);
 
-  // 2. Setup Background Music
+  // 2. Prepare Multimedia Assets
+  const visualAssets = [];
+  for (let i = 0; i < sceneCount; i++) {
+    const keyword = scriptData.screenTexts[i].replace(/^#\s*/, '');
+    let assetPath = await fetchRelevantVideo(keyword, i);
+    let assetType = assetPath ? 'video' : 'image';
+    if (!assetPath) assetPath = await fetchRelevantImage(keyword, i);
+    visualAssets.push({ path: assetPath, type: assetType });
+  }
+
+  // 3. Setup Music
   const musicDir = path.join(process.cwd(), 'assets', 'music');
   let musicFile = null;
   try {
-    const musicFiles = (await fs.readdir(musicDir)).filter(f => f.endsWith('.mp3') || f.endsWith('.wav'));
-    if (musicFiles.length > 0) {
-      musicFile = path.join(musicDir, musicFiles[Math.floor(Math.random() * musicFiles.length)]);
-      console.log(`🎵 Using background music: ${path.basename(musicFile)}`);
-    } else {
-      console.log('ℹ️ No background music found in assets/music, skipping mix.');
-    }
-  } catch (err) {
-    console.log('ℹ️ Music directory not found, skipping mix.');
-  }
+    const musicFiles = (await fs.readdir(musicDir)).filter(f => f.endsWith('.mp3'));
+    if (musicFiles.length > 0) musicFile = path.join(musicDir, musicFiles[Math.floor(Math.random() * musicFiles.length)]);
+  } catch (err) { }
 
-  // Prepare monetization data
-  const descVariants = JSON.parse(await fs.readFile(path.join(process.cwd(), 'config', 'description_variants.json'), 'utf-8'));
-  const selectedDescriptionId = Math.floor(Math.random() * descVariants.length);
-  scriptData.selectedDescriptionId = selectedDescriptionId;
-  scriptData.selectedDescription = descVariants[selectedDescriptionId];
-
-  // Logic for Affiliate Selection
-  const affList = JSON.parse(await fs.readFile(path.join(process.cwd(), 'config', 'affiliate_list.json'), 'utf-8'));
-  const selectedAffiliate = affList[Math.floor(Math.random() * affList.length)];
-  scriptData.selectedAffiliateId = selectedAffiliate.id;
-  scriptData.selectedAffiliateCopy = selectedAffiliate.copy;
-
-  // 3. Fetch relevant visuals for each text segment
-  console.log('🖼️  Fetching visuals for segments...');
-  const segments = scriptData.screenTexts;
-  const timePerSegment = TOTAL_DURATION / segments.length;
-
-  // Growth Hack: Limit video animations to 3-5 unique clips to maintain "Ultra-Premium" feel without clutter
-  const maxVideos = Math.min(5, Math.max(3, Math.floor(segments.length / 3)));
-  let videosFetched = 0;
-  const videoIndices = new Set();
-
-  // Randomly select indices for videos
-  while (videoIndices.size < Math.min(maxVideos, segments.length)) {
-    videoIndices.add(Math.floor(Math.random() * segments.length));
-  }
-
-  const visualAssets = []; // Array of { path, type: 'video' | 'image' | 'color' }
-  for (let i = 0; i < segments.length; i++) {
-    const keyword = segments[i].replace(/^#\s*/, '');
-    let assetPath = null;
-    let assetType = 'color';
-
-    // Try Video only for selected indices
-    if (videoIndices.has(i)) {
-      console.log(`🎬 Target segment ${i} for Video Animation...`);
-      const baseKeyword = scriptData.visualSettings.keywords || keyword;
-      const cinematicKeyword = `cinematic ${baseKeyword} ${keyword}`;
-      assetPath = await fetchRelevantVideo(cinematicKeyword, i);
-      if (assetPath) {
-        assetType = 'video';
-        videosFetched++;
-      }
-    }
-
-    // Fallback to Image if video not selected or fetch failed
-    if (!assetPath) {
-      assetPath = await fetchRelevantImage(keyword, i);
-      assetType = assetPath ? 'image' : 'color';
-    }
-
-    visualAssets.push({ path: assetPath, type: assetType });
-  }
-  console.log(`✅ Visuals prepared: ${videosFetched} videos, ${visualAssets.length - videosFetched} images/colors.`);
-
-  // 4. Build Complex Filter for FFmpeg
+  // 4. Complex Filter Construction (The Manipulation Engine)
   let filterComplex = [];
-  let inputChain = [];
-  const absoluteFontPath = path.resolve('assets/font.ttf').replace(/\\/g, '/').replace(/:/g, '\\:');
 
-  for (let i = 0; i < segments.length; i++) {
-    const asset = visualAssets[i];
-    const fps = 30;
-    const durationFrames = Math.ceil(timePerSegment * fps);
+  // 4.1 Visual Flash-Cuts & Zoom Logic
+  visualAssets.forEach((asset, i) => {
+    const tag = `vbase${i}`;
+    const isProof = i === 2 || i === 3; // Proof Frame at 4-6s
+    const zAmount = isProof ? 0.0015 : 0.0008;
 
-    // Base visual processing (must stay before concat)
     if (asset.type === 'video') {
-      filterComplex.push(`[${i}:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,setsar=1,setpts=PTS-STARTPTS[vbase${i}]`);
+      filterComplex.push(`[${i}:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,zoompan=z='zoom+0.0005':d=60:s=1080x1920,setsar=1,setpts=PTS-STARTPTS[${tag}]`);
     } else if (asset.type === 'image') {
-      const zoomType = i % 2 === 0 ? "zoom+0.0006" : "zoom-0.0006";
-      filterComplex.push(`[${i}:v]scale=1080:1920,format=yuv420p,zoompan=z='${zoomType}':d=${durationFrames}:s=1080x1920:fps=${fps}:x='iw*0.01*on/${durationFrames}':y='ih*0.01*on/${durationFrames}',setsar=1[vbase${i}]`);
+      filterComplex.push(`[${i}:v]scale=1920:3412,format=yuv420p,zoompan=z='zoom+${zAmount}':d=60:s=1080x1920:fps=30:x='iw*0.1*on/60':y='ih*0.1*on/60',setsar=1[${tag}]`);
     } else {
-      filterComplex.push(`[${i}:v]setsar=1[vbase${i}]`);
+      filterComplex.push(`[${i}:v]setsar=1[${tag}]`);
     }
-    inputChain.push(`[vbase${i}]`);
-  }
+  });
 
-  // Concat segments
-  filterComplex.push(`${inputChain.join('')}concat=n=${segments.length}:v=1:a=0[vconcat]`);
-
+  const concatInputs = visualAssets.map((_, i) => `[vbase${i}]`).join('');
+  filterComplex.push(`${concatInputs}concat=n=${sceneCount}:v=1:a=0[vconcat]`);
   let vTag = 'vconcat';
 
-  // Masterpiece: Removed Viral Hook for professional feel
+  // 4.2 Subtitle Engineering (3 Words, UPPERCASE)
+  const formatTime = (s) => {
+    const ms = Math.floor((s % 1) * 100);
+    const seconds = Math.floor(s % 60);
+    const minutes = Math.floor((s / 60) % 60);
+    const hours = Math.floor(s / 3600);
+    return `${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}.${String(ms).padStart(2, '0')}`;
+  };
 
-  // Growth Hack 2: Ultra-Premium Karaoke Subtitles (Using Word Boundaries)
   if (scriptData.wordBoundaries && scriptData.wordBoundaries.length > 0) {
+    let assContent = `[Script Info]\nScriptType: v4.00+\nPlayResX: 1080\nPlayResY: 1920\n\n[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\nStyle: Default,Inter,100,&H00FFFFFF,&H0000FFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,6,0,5,50,50,960,1\n\n[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n`;
+
+    for (let i = 0; i < scriptData.wordBoundaries.length; i += 3) {
+      const phraseWords = scriptData.wordBoundaries.slice(i, i + 3);
+      const start = phraseWords[0].start;
+      const end = phraseWords[phraseWords.length - 1].start + phraseWords[phraseWords.length - 1].duration + 0.3;
+      let text = phraseWords.map(w => `{\\k${Math.floor(w.duration * 100)}}${w.text.toUpperCase()}`).join(' ');
+      assContent += `Dialogue: 0,${formatTime(start)},${formatTime(end)},Default,,0,0,0,,${text}\n`;
+    }
     const assFile = path.join(config.paths.output, `subtitles_${timestamp}.ass`);
-    let assContent = `[Script Info]
-ScriptType: v4.00+
-PlayResX: 1080
-PlayResY: 1920
-ScaledBorderAndShadow: yes
-
-[V4+ Styles]
-Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Default,Inter,70,&H00FFFFFF,&H0000FFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,3,2,5,50,50,960,1
-Style: Karaoke,Inter,75,&H00FFFFFF,&H0000FFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,4,0,5,50,50,960,1
-
-[Events]
-Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-`;
-
-    const formatTime = (s) => {
-      const ms = Math.floor((s % 1) * 100);
-      const seconds = Math.floor(s % 60);
-      const minutes = Math.floor((s / 60) % 60);
-      const hours = Math.floor(s / 3600);
-      return `${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}.${String(ms).padStart(2, '0')}`;
-    };
-
-    // 4. Visual Engine (Cinematic Flash-Cuts)
-    // const TOTAL_DURATION = audioDuration; // Already defined above
-    const sceneCount = visualAssets.length;
-    // FORCE FAST PACING: Each segment max 2.5 seconds
-    const timePerSegment = Math.min(2.5, TOTAL_DURATION / sceneCount);
-    const actualDuration = sceneCount * timePerSegment;
-
-    let filterComplex = [];
-    let vTag = '0:v';
-
-    // Apply Cinematic Zoom & Pan to EACH segment to keep it 'alive'
-    visualAssets.forEach((asset, i) => {
-      // const start = i * timePerSegment; // Not used here
-      const tag = `vbase${i}`;
-
-      // Smooth Zoom In effect (Retention Hack)
-      // Note: The input index for assets starts from 0.
-      // If asset.type is 'video', it's already scaled and cropped in the input options.
-      // If asset.type is 'image', we apply zoompan.
-      // If asset.type is 'color', we just pass it through.
-      if (asset.type === 'video') {
-        filterComplex.push(`[${i}:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,setsar=1,setpts=PTS-STARTPTS[${tag}]`);
-      } else if (asset.type === 'image') {
-        filterComplex.push(`[${i}:v]scale=1920:3412,format=yuv420p,zoompan=z='zoom+0.0008':d=125:s=1080x1920:fps=30:x='iw*0.1*on/125':y='ih*0.1*on/125',setsar=1[${tag}]`);
-      } else { // color
-        filterComplex.push(`[${i}:v]setsar=1[${tag}]`);
-      }
-    });
-
-    // Concat all flash-cuts
-    const concatInputs = visualAssets.map((_, i) => `[vbase${i}]`).join('');
-    filterComplex.push(`${concatInputs}concat=n=${sceneCount}:v=1:a=0[vconcat]`);
-    vTag = 'vconcat';
-
-    // 4.5 Universal High-Impact Subtitles
-    const absoluteFontPath = path.resolve('assets/font.ttf').replace(/\\/g, '/').replace(/:/g, '\\:');
-
-    if (scriptData.wordBoundaries && scriptData.wordBoundaries.length > 0) {
-      // Group words into phrases (e.g. 4 words per line)
-      const wordsPerPhrase = 4;
-      for (let i = 0; i < scriptData.wordBoundaries.length; i += wordsPerPhrase) {
-        const phraseWords = scriptData.wordBoundaries.slice(i, i + wordsPerPhrase);
-        const start = phraseWords[0].start;
-        const end = phraseWords[phraseWords.length - 1].start + phraseWords[phraseWords.length - 1].duration + 0.5;
-
-        let karaokeText = "";
-        phraseWords.forEach(w => {
-          const dur = Math.floor(w.duration * 100);
-          karaokeText += `{\\k${dur}}${w.text} `;
-        });
-
-        assContent += `Dialogue: 0,${formatTime(start)},${formatTime(end)},Karaoke,,0,0,0,,${karaokeText.trim()}\n`;
-      }
-
-      const assFile = path.join(config.paths.output, `subtitles_${timestamp}.ass`);
-      await fs.writeFile(assFile, assContent);
-      const absoluteAssPath = path.resolve(assFile).replace(/\\/g, '/').replace(/:/g, '\\:');
-      // For ASS subtitles, we use the subtitles filter
-      filterComplex.push(`[${vTag}]subtitles='${absoluteAssPath}'[vsub]`);
-      vTag = 'vsub';
-      console.log('📜 High-Retention Subtitles (ASS) applied.');
-    } else {
-      // Fallback to old segment-based subtitles if no word boundaries
-      for (let i = 0; i < segments.length; i++) {
-        const startTime = i * timePerSegment + 0.5;
-        const endTime = (i + 1) * timePerSegment - 0.2;
-        const text = segments[i].replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/:/g, '\\:').replace(/,/g, '\\,');
-        const color = text.startsWith('#') ? `0x${scriptData.visualSettings.accentColor.slice(1)}` : '0xFFFFFF';
-
-        filterComplex.push(`[${vTag}]drawtext=text='${text}':fontfile=${absoluteFontPath}:fontsize=80:fontcolor=${color}:x=(w-text_w)/2:y=h/2:box=1:boxcolor=black@0.5:enable='between(t,${startTime},${endTime})'[vtext${i}]`);
-        vTag = `vtext${i}`;
-      }
-    }
-
-    // Cinematic Masterpiece: Final CTA & Vignette
-    const subText = scriptData.selectedCTA || "KLIK FOLLOW UNTUK RAHASIA BERIKUTNYA";
-    filterComplex.push(`[${vTag}]drawtext=text='${subText}':fontfile=${absoluteFontPath}:fontsize=80:fontcolor=white:x=(w-text_w)/2:y=h-text_h-180:alpha='if(lt(t,${TOTAL_DURATION}-3),0,if(lt(t,${TOTAL_DURATION}-2.5),(t-(${TOTAL_DURATION}-3))/0.5,1))':box=1:boxcolor=black@0.7:boxborderw=30:enable='between(t,${TOTAL_DURATION}-3,${TOTAL_DURATION})'[vcta]`);
-    filterComplex.push(`[vcta]vignette=angle=0.4:x0=w/2:y0=h/2[vfinal]`);
-
-    // Log the final filter complex for debugging
-    console.log('🧪 DEBUG: Total filter chains:', filterComplex.length);
-
-    // 5. Audio Mixing Engine (Masterpiece Edition)
-    const audioIndex = segments.length;
-    const NARRATION_DELAY = 1000; // 1 second delay in ms
-
-    if (musicFile) {
-      if (scriptData.narration !== 'none') {
-        // 1s Delay for Narration + Boost
-        // Standard stereo delay
-        filterComplex.push(`[${audioIndex}:a]adelay=${NARRATION_DELAY}|${NARRATION_DELAY},volume=1.8[v_audio]`);
-        // Atmospheric Background Music (Low volume, looped)
-        // Note: Use 'all=1' for adelay if mono, but | is standard for stereo.
-        filterComplex.push(`[${audioIndex + 1}:a]volume=0.08,aloop=loop=-1:size=2e9,atrim=0:${TOTAL_DURATION + 1}[m_audio]`);
-        // Final Mix
-        filterComplex.push(`[v_audio][m_audio]amix=inputs=2:duration=first:dropout_transition=3[afinal]`);
-      } else {
-        // Visual-Only: Just Music at higher volume
-        filterComplex.push(`[${audioIndex + 1}:a]volume=0.5,aloop=loop=-1:size=2e9,atrim=0:${TOTAL_DURATION + 1}[afinal]`);
-      }
-    } else {
-      if (scriptData.narration !== 'none') {
-        // Robust adelay that works even if narration is mono
-        filterComplex.push(`[${audioIndex}:a]adelay=${NARRATION_DELAY}:all=1[afinal]`);
-      } else {
-        // No music and no narration: Silent (not ideal, but fallback)
-        filterComplex.push(`anullsrc=r=44100:cl=stereo:d=${TOTAL_DURATION}[afinal]`);
-      }
-    }
-
-    return new Promise((resolve, reject) => {
-      let command = ffmpeg();
-
-      // Inputs: Visuals (Images or Videos)
-      visualAssets.forEach(asset => {
-        if (asset.type === 'video') {
-          command = command.input(path.resolve(asset.path))
-            .inputOptions(['-stream_loop', '-1']) // Loop video to ensure it covers duration
-            .inputOptions(['-t', timePerSegment.toString()]);
-        } else if (asset.type === 'image') {
-          command = command.input(path.resolve(asset.path))
-            .inputOptions(['-loop', '1', '-t', timePerSegment.toString()]);
-        } else {
-          command = command.input(`color=c=black:s=1080x1920:d=${timePerSegment}`)
-            .inputFormat('lavfi');
-        }
-      });
-
-      // Inputs: Narration (Index: segments.length)
-      command = command.input(path.resolve(audioFile));
-
-      // Inputs: Background Music (Index: segments.length + 1)
-      if (musicFile) {
-        command = command.input(path.resolve(musicFile));
-      }
-
-      command
-        .complexFilter(filterComplex.join(';'))
-        .map('[vfinal]')
-        .map('[afinal]')
-        .outputOptions([
-          '-c:v', 'libx264',
-          '-pix_fmt', 'yuv420p',
-          '-r', '30',
-          '-b:v', '7000k',
-          '-c:a', 'aac',
-          '-b:a', '192k',
-          '-t', TOTAL_DURATION.toString(),
-          '-shortest'
-        ])
-        .output(path.resolve(outputFile))
-        .on('start', (cmd) => {
-          console.log('🚀 FFmpeg starting Ultra-Premium Animated Render...');
-          console.log('💻 Command:', cmd);
-        })
-        .on('stderr', (stderr) => {
-          if (stderr.toLowerCase().includes('error')) {
-            console.error('FFmpeg Log:', stderr.trim());
-          }
-        })
-        .on('end', async () => {
-          await logSelection(outputFile, scriptData.selectedCTA, scriptData.selectedDescriptionId, scriptData.selectedAffiliateId);
-          await cleanupTempImages();
-          resolve(outputFile);
-        })
-        .on('error', (err) => {
-          cleanupTempImages().catch(() => { });
-          reject(new Error(`Ultra-Premium animated render failed: ${err.message}`));
-        })
-        .run();
-    });
+    await fs.writeFile(assFile, assContent);
+    filterComplex.push(`[${vTag}]subtitles='${path.resolve(assFile).replace(/\\/g, '/').replace(/:/g, '\\:')}'[vsub]`);
+    vTag = 'vsub';
   }
+
+  filterComplex.push(`[${vTag}]vignette=angle=0.4:x0=w/2:y0=h/2[vfinal]`);
+
+  // 4.3 Audio Engineering
+  const audioIndex = sceneCount;
+  if (musicFile) {
+    filterComplex.push(`[${audioIndex}:a]adelay=800|800,volume=1.9[v_audio]`);
+    filterComplex.push(`[${audioIndex + 1}:a]volume=0.06,aloop=loop=-1:size=2e9,atrim=0:${TOTAL_DURATION + 1}[m_audio]`);
+    filterComplex.push(`[v_audio][m_audio]amix=inputs=2:duration=first:dropout_transition=2[afinal]`);
+  } else {
+    filterComplex.push(`[${audioIndex}:a]adelay=800:all=1,volume=1.5[afinal]`);
+  }
+
+  // 5. Render Command
+  return new Promise((resolve, reject) => {
+    let command = ffmpeg();
+    visualAssets.forEach(asset => {
+      command = command.input(path.resolve(asset.path)).inputOptions(['-loop', '1', '-t', '2.0']);
+    });
+    command = command.input(path.resolve(audioFile));
+    if (musicFile) command = command.input(path.resolve(musicFile));
+
+    command.complexFilter(filterComplex.join(';'))
+      .map('[vfinal]').map('[afinal]')
+      .outputOptions(['-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-r', '30', '-b:v', '6000k', '-c:a', 'aac', '-t', TOTAL_DURATION.toString(), '-shortest'])
+      .output(path.resolve(outputFile))
+      .on('end', async () => {
+        await logSelection(outputFile, scriptData.selectedCTA, scriptData.selectedDescriptionId, scriptData.selectedAffiliateId);
+        await cleanupTempImages();
+        resolve(outputFile);
+      })
+      .on('error', (err) => {
+        cleanupTempImages().catch(() => { });
+        reject(err);
+      })
+      .run();
+  });
+}
