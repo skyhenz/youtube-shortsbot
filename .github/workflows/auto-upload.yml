@@ -56,6 +56,24 @@ jobs:
           git add logs/ paket_konten/ || true
           git diff --staged --quiet || (git commit -m "bot: update state [skip ci]" && git push origin HEAD:${{ github.ref_name }}) || true
 
+      - name: Notification (Success)
+        if: success()
+        run: |
+          curl -d "✅ Mantap Bos! Video baru sukses terupload ke YouTube Shorts! 🚀" \
+               -H "Title: YouTube Bot Sukses" \
+               -H "Priority: high" \
+               -H "Tags: white_check_mark,rocket" \
+               ntfy.sh/skyhenz-yt-shorts-bot-laporan
+
+      - name: Notification (Failure)
+        if: failure()
+        run: |
+          curl -d "❌ Aduh Bos, upload gagal. Ada masalah teknis di server, tolong cek log ya! 🛎️" \
+               -H "Title: YouTube Bot Error" \
+               -H "Priority: urgent" \
+               -H "Tags: x,warning" \
+               ntfy.sh/skyhenz-yt-shorts-bot-laporan
+
       - name: Upload logs
         if: always()
         uses: actions/upload-artifact@v4
