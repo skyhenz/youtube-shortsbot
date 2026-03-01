@@ -1,5 +1,5 @@
 {
-  "status": "SLEEPING",
-  "timestamp": "2026-02-04T06:33:26.260Z",
-  "next_run": "2026-02-04T10:33:26.260Z"
+  "status": "ERROR",
+  "timestamp": "2026-03-01T06:34:45.614Z",
+  "error": "Ultra-Premium animated render failed: ffmpeg exited with code 8: Failed to set value '[0:v]scale=1080:1920,format=yuv420p,zoompan=z='zoom+0.0006':d=184:s=1080x1920:fps=30:x='iw*0.01*on/184':y='ih*0.01*on/184',setsar=1[vbase0];[1:v]scale=1080:1920,format=yuv420p,zoompan=z='zoom-0.0006':d=184:s=1080x1920:fps=30:x='iw*0.01*on/184':y='ih*0.01*on/184',setsar=1[vbase1];[2:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,setsar=1,setpts=PTS-STARTPTS[vbase2];[3:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,setsar=1,setpts=PTS-STARTPTS[vbase3];[4:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,setsar=1,setpts=PTS-STARTPTS[vbase4];[5:v]scale=1080:1920,format=yuv420p,zoompan=z='zoom-0.0006':d=184:s=1080x1920:fps=30:x='iw*0.01*on/184':y='ih*0.01*on/184',setsar=1[vbase5];[vbase0][vbase1][vbase2][vbase3][vbase4][vbase5]concat=n=6:v=1:a=0[vconcat];[vconcat]subtitles='/home/runner/work/youtube-shortsbot/youtube-shortsbot/output/subtitles_20260301_063441.ass'[vsub];[vsub]drawtext=text='Konten psikologi baru setiap hari, follow ya.':fontfile=/home/runner/work/youtube-shortsbot/youtube-shortsbot/assets/font.ttf:fontsize=60:fontcolor=white:x=(w-text_w)/2:y=h-text_h-150:alpha='if(lt(t,36.672-3),0,if(lt(t,36.672-2.5),(t-(36.672-3))/0.5,1))':box=1:boxcolor=black@0.6:boxborderw=20:enable='between(t,36.672-3,36.672)'[vcta];[vcta]vignette=angle=0.4:x0=w/2:y0=h/2[vfinal];[6:a]adelay=1000|1000[afinal]' for option 'filter_complex': Filter not found\nError parsing global options: Filter not found\n"
 }
