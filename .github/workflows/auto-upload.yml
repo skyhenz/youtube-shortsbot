@@ -47,7 +47,6 @@ jobs:
 
       - name: Run bot
         run: node index.js
-        continue-on-error: true
 
       - name: Save state to repository
         if: always()
@@ -55,7 +54,7 @@ jobs:
           git config --local user.email "bot@github-actions.com"
           git config --local user.name "YouTube Bot"
           git add logs/ paket_konten/ || true
-          git diff --staged --quiet || git commit -m "bot: update state [skip ci]" && git push origin master || true
+          git diff --staged --quiet || (git commit -m "bot: update state [skip ci]" && git push origin HEAD:${{ github.ref_name }}) || true
 
       - name: Upload logs
         if: always()
