@@ -1,14 +1,11 @@
 import ffmpeg from 'fluent-ffmpeg';
-import ffmpegStatic from 'ffmpeg-static';
-import ffprobeStatic from '@ffprobe-installer/ffprobe';
 import path from 'path';
 import fs from 'fs/promises';
 import config from '../config/config.js';
 import { logSelection } from './log_rotation.js';
 import { fetchRelevantImage, fetchRelevantVideo, cleanupTempImages } from './image_fetcher.js';
 
-ffmpeg.setFfmpegPath(ffmpegStatic);
-ffmpeg.setFfprobePath(ffprobeStatic.path);
+// FFmpeg will use the system path (pre-installed in GitHub Actions)
 
 // Helper to get audio duration via ffprobe
 async function getAudioDuration(filePath) {
@@ -210,8 +207,10 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
   if (musicFile) {
     if (scriptData.narration !== 'none') {
       // 1s Delay for Narration + Boost
+      // Standard stereo delay
       filterComplex.push(`[${audioIndex}:a]adelay=${NARRATION_DELAY}|${NARRATION_DELAY},volume=1.8[v_audio]`);
       // Atmospheric Background Music (Low volume, looped)
+      // Note: Use 'all=1' for adelay if mono, but | is standard for stereo.
       filterComplex.push(`[${audioIndex + 1}:a]volume=0.08,aloop=loop=-1:size=2e9,atrim=0:${TOTAL_DURATION + 1}[m_audio]`);
       // Final Mix
       filterComplex.push(`[v_audio][m_audio]amix=inputs=2:duration=first:dropout_transition=3[afinal]`);
@@ -221,10 +220,11 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     }
   } else {
     if (scriptData.narration !== 'none') {
-      filterComplex.push(`[${audioIndex}:a]adelay=${NARRATION_DELAY}|${NARRATION_DELAY}[afinal]`);
+      // Robust adelay that works even if narration is mono
+      filterComplex.push(`[${audioIndex}:a]adelay=${NARRATION_DELAY}:all=1[afinal]`);
     } else {
       // No music and no narration: Silent (not ideal, but fallback)
-      filterComplex.push(`anullsrc=r=44100:cl=stereo[afinal]`);
+      filterComplex.push(`anullsrc=r=44100:cl=stereo:d=${TOTAL_DURATION}[afinal]`);
     }
   }
 

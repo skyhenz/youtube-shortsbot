@@ -139,8 +139,9 @@ async function generateBatch(count = 5) {
     // Get processed log to avoid duplicate topics
     let usedTopics = [];
     try {
-        const processed = JSON.parse(await fs.readFile(path.join(__dirname, '..', 'paket_konten'), 'utf-8').catch(() => '[]'));
-        usedTopics = processed;
+        const processedFile = path.join(contentDir, '..', 'logs', 'processed.json');
+        const data = await fs.readFile(processedFile, 'utf-8');
+        usedTopics = JSON.parse(data);
     } catch { }
 
     let nextNum = await getNextNumber();
