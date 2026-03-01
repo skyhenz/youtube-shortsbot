@@ -166,9 +166,7 @@ async function main() {
                     console.log(`ℹ️ Topic '${scriptData.topic}' has already been uploaded. Skipping.`);
                     await markAsProcessed(contentPackage);
                     if (specificFile) {
-                        console.log('✅ Specific file already processed. Exiting.');
-                        await updateBotStatus('IDLE');
-                        process.exit(0);
+                        return; // Just return, main will handle exit
                     }
                     continue;
                 }
@@ -221,7 +219,7 @@ async function main() {
 
                                 await logError(contentPackage, [uploadError.message]);
                                 await logHealthCheck('upload_failed', { error: uploadError.message });
-                                await markAsProcessed(contentPackage);
+                                // DON'T mark as processed, so it can be retried next time
                             }
                         }
                     }
