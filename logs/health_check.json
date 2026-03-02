@@ -125,5 +125,14 @@
     "uploads_success": 1,
     "uploads_failed": 0,
     "errors": []
+  },
+  {
+    "date": "2026-03-02",
+    "videos_created": 0,
+    "uploads_success": 0,
+    "uploads_failed": 1,
+    "errors": [
+      "Loop Error: Cannot find ffprobe"
+    ]
   }
 ]

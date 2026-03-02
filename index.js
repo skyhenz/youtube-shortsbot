@@ -237,7 +237,13 @@ async function main() {
 
         } catch (error) {
             console.error('❌ Loop Error:', error.message);
+            await logHealthCheck('upload_failed', { error: `Loop Error: ${error.message}` });
             await updateBotStatus('ERROR', { error: error.message });
+
+            if (process.env.SINGLE_RUN === 'true') {
+                console.log('❌ Single run failed. Exiting with error.');
+                process.exit(1);
+            }
         }
 
         if (config.testMode) {
@@ -249,6 +255,7 @@ async function main() {
         // Exit immediately if running in GitHub Actions (single run mode)
         if (process.env.SINGLE_RUN === 'true') {
             console.log('✅ Single run complete. Exiting.');
+            await updateBotStatus('IDLE');
             process.exit(0);
         }
 

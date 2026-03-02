@@ -45,7 +45,10 @@ export default class AuthManager {
                     if (!tokens.access_token || this.oauth2Client.isTokenExpiring()) {
                         console.log('🔄 Access token expired, refreshing...');
                         const { credentials } = await this.oauth2Client.refreshAccessToken();
-                        await this.saveTokens(credentials);
+                        // IMPORTANT: Merge with existing tokens to preserve refresh_token
+                        const updatedTokens = { ...tokens, ...credentials };
+                        await this.saveTokens(updatedTokens);
+                        this.oauth2Client.setCredentials(updatedTokens);
                         console.log('✅ Token refreshed and saved.');
                     }
                     return this.oauth2Client;
@@ -95,7 +98,17 @@ export default class AuthManager {
     }
 
     async saveTokens(tokens) {
+        // Ensure we don't save an empty or invalid token object
+        if (!tokens || (typeof tokens !== 'object')) return;
+
         await fs.mkdir(path.dirname(TOKEN_PATH), { recursive: true });
+        // Read existing if possible to avoid losing refresh_token
+        try {
+            const currentData = await fs.readFile(TOKEN_PATH, 'utf-8');
+            const currentTokens = JSON.parse(currentData);
+            tokens = { ...currentTokens, ...tokens };
+        } catch (e) { }
+
         await fs.writeFile(TOKEN_PATH, JSON.stringify(tokens, null, 2));
     }
 
