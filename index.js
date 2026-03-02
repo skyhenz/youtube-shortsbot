@@ -219,6 +219,11 @@ async function main() {
 
                                 await logError(contentPackage, [uploadError.message]);
                                 await logHealthCheck('upload_failed', { error: uploadError.message });
+
+                                if (process.env.SINGLE_RUN === 'true') {
+                                    console.error('❌ Upload failed in Single Run mode. Exiting with error.');
+                                    process.exit(1);
+                                }
                                 // DON'T mark as processed, so it can be retried next time
                             }
                         }

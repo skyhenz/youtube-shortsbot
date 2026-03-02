@@ -11,6 +11,17 @@ export default async function uploadYoutube(videoFile, scriptData) {
     const auth = await authManager.getClient();
     const youtube = google.youtube({ version: 'v3', auth });
 
+    try {
+        const channelRes = await youtube.channels.list({
+            part: 'snippet',
+            mine: true
+        });
+        const channelName = channelRes.data.items[0].snippet.title;
+        console.log(`📺 Target Channel: ${channelName}`);
+    } catch (e) {
+        console.warn('⚠️ Could not fetch channel name, proceeding with upload.');
+    }
+
     const rawTitle = `${scriptData.topic} #Shorts`;
     const title = sanitizeTitle(rawTitle);
 
