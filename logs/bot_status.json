@@ -1,5 +1,5 @@
 {
-  "status": "SLEEPING",
-  "timestamp": "2026-03-02T16:52:12.145Z",
-  "next_run": "2026-03-02T20:52:12.145Z"
+  "status": "ERROR",
+  "timestamp": "2026-03-03T17:23:43.854Z",
+  "error": "ffmpeg exited with code 8: Option loop not found.\nError opening input file /home/runner/work/youtube-shortsbot/youtube-shortsbot/assets/temp_bg/vid_0_neuroplastisitas_otak.mp4.\nError opening input files: Option not found\n"
 }
