@@ -1,14 +1,10 @@
 {
-  "CTA_disarankan": [
-    "Follow untuk fakta psikologi lainnya."
-  ],
-  "CTA_dihentikan": [
-    "Follow untuk fakta psikologi lainnya."
-  ],
+  "CTA_disarankan": [],
+  "CTA_dihentikan": [],
   "Affiliate_dipertahankan": [
-    "ebook_psikologi"
+    "undefined"
   ],
   "Affiliate_diganti": [
-    "ebook_psikologi"
+    "undefined"
   ]
 }
