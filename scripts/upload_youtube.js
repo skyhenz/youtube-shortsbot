@@ -78,7 +78,12 @@ export default async function uploadYoutube(videoFile, scriptData) {
             }
         });
 
-        return response.data.id;
+        const videoId = response.data.id;
+        console.log(`✅ Upload Success!`);
+        console.log(`🔗 Video Link: https://www.youtube.com/watch?v=${videoId}`);
+        console.log(`🎬 Video Title: ${title}`);
+
+        return videoId;
 
     } catch (error) {
         throw new Error(`YouTube upload failed: ${error.message}`);

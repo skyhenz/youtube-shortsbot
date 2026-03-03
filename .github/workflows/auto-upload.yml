@@ -53,8 +53,14 @@ jobs:
         run: |
           git config --local user.email "bot@github-actions.com"
           git config --local user.name "YouTube Bot"
-          git add logs/ paket_konten/ || true
-          git diff --staged --quiet || (git commit -m "bot: update state [skip ci]" && git push origin HEAD:${{ github.ref_name }}) || true
+          git add logs/ paket_konten/
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "bot: update state [skip ci]"
+            git pull --rebase origin ${{ github.ref_name }}
+            git push origin HEAD:${{ github.ref_name }}
+          else
+            echo "No changes to commit"
+          fi
 
       - name: Notification (Success)
         if: success()
