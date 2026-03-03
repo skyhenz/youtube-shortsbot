@@ -2,8 +2,8 @@ name: YouTube Shorts Auto Upload
 
 on:
   schedule:
-    # Run at 07:00, 15:00, 23:00 WIB (00:00, 08:00, 16:00 UTC)
-    - cron: "0 0,8,16 * * *"
+    # Run at 12:41 WIB (05:41 UTC) for testing
+    - cron: "41 5 * * *"
   workflow_dispatch:
 
 permissions:
