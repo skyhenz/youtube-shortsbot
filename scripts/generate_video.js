@@ -9,6 +9,11 @@ import { fetchRelevantImage, fetchRelevantVideo, cleanupTempImages } from './ima
 
 // Helper to get audio duration via ffprobe
 async function getAudioDuration(filePath) {
+  // Fix for GH Actions: ensure ffprobe is found
+  if (process.platform === 'linux') {
+    ffmpeg.setFfprobePath('/usr/bin/ffprobe');
+  }
+
   return new Promise((resolve, reject) => {
     ffmpeg.ffprobe(filePath, (err, metadata) => {
       if (err) reject(err);
@@ -111,7 +116,12 @@ export default async function generateVideo(scriptData, audioFile) {
   return new Promise((resolve, reject) => {
     let command = ffmpeg();
     visualAssets.forEach(asset => {
-      command = command.input(path.resolve(asset.path)).inputOptions(['-loop', '1', '-t', '2.0']);
+      if (asset.type === 'image') {
+        command = command.input(path.resolve(asset.path)).inputOptions(['-loop', '1', '-t', '2.0']);
+      } else {
+        // Video inputs don't use -loop 1
+        command = command.input(path.resolve(asset.path)).inputOptions(['-t', '2.0']);
+      }
     });
     command = command.input(path.resolve(audioFile));
     if (musicFile) command = command.input(path.resolve(musicFile));
