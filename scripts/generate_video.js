@@ -116,7 +116,11 @@ export default async function generateVideo(scriptData, audioFile) {
   return new Promise((resolve, reject) => {
     let command = ffmpeg();
     visualAssets.forEach(asset => {
-      if (asset.type === 'image') {
+      if (!asset.path) return; // Skip invalid assets
+
+      const isVideo = asset.path.toLowerCase().endsWith('.mp4');
+      if (!isVideo) {
+        // Only loop for static images
         command = command.input(path.resolve(asset.path)).inputOptions(['-loop', '1', '-t', '2.0']);
       } else {
         // Video inputs don't use -loop 1
@@ -136,6 +140,7 @@ export default async function generateVideo(scriptData, audioFile) {
         resolve(outputFile);
       })
       .on('error', (err) => {
+        console.error('❌ FFmpeg Error:', err.message);
         cleanupTempImages().catch(() => { });
         reject(err);
       })

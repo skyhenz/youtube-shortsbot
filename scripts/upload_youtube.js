@@ -13,11 +13,13 @@ export default async function uploadYoutube(videoFile, scriptData) {
 
     try {
         const channelRes = await youtube.channels.list({
-            part: 'snippet',
+            part: 'snippet,id',
             mine: true
         });
-        const channelName = channelRes.data.items[0].snippet.title;
-        console.log(`📺 Target Channel: ${channelName}`);
+        const channel = channelRes.data.items[0];
+        console.log(`📺 Target Channel Name: ${channel.snippet.title}`);
+        console.log(`🆔 Target Channel ID: ${channel.id}`);
+        console.log(`🔗 Channel URL: https://www.youtube.com/channel/${channel.id}`);
     } catch (e) {
         console.warn('⚠️ Could not fetch channel name, proceeding with upload.');
     }
