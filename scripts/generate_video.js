@@ -1,37 +1,38 @@
 import ffmpeg from 'fluent-ffmpeg';
-import ffmpegStatic from 'ffmpeg-static';
-import ffprobeStatic from 'ffprobe-static';
 import path from 'path';
 import fs from 'fs/promises';
 import config from '../config/config.js';
 import { logSelection } from './log_rotation.js';
 import { fetchRelevantImage, fetchRelevantVideo, cleanupTempImages } from './image_fetcher.js';
 
-// FFmpeg will use the system path (pre-installed in GitHub Actions)
-try {
-  if (process.platform !== 'linux') {
-    console.log('🔍 Setting up FFmpeg for Windows...');
-    try {
-      ffmpeg.setFfmpegPath(ffmpegStatic);
-      console.log('✅ FFmpeg static path set.');
-    } catch (e) {
-      console.warn('⚠️ Could not set FFmpeg static path, relying on system PATH.');
-    }
+// FFmpeg Setup
+const setupFFmpeg = async () => {
+  try {
+    if (process.platform !== 'linux') {
+      console.log('🔍 Setting up FFmpeg for Windows...');
+      const { default: ffmpegStatic } = await import('ffmpeg-static');
+      const { default: ffprobeStatic } = await import('ffprobe-static');
 
-    try {
-      ffmpeg.setFfprobePath(ffprobeStatic.path);
-      console.log('✅ FFprobe static path set.');
-    } catch (e) {
-      console.warn('⚠️ Could not set FFprobe static path, relying on system PATH.');
+      if (ffmpegStatic) {
+        ffmpeg.setFfmpegPath(ffmpegStatic);
+        console.log('✅ FFmpeg static path set.');
+      }
+      if (ffprobeStatic && ffprobeStatic.path) {
+        ffmpeg.setFfprobePath(ffprobeStatic.path);
+        console.log('✅ FFprobe static path set.');
+      }
+    } else {
+      console.log('🐧 Running on Linux, using system FFmpeg/ffprobe.');
+      // Ensure ffprobe is accessible
+      ffmpeg.setFfprobePath('/usr/bin/ffprobe');
     }
-  } else {
-    // On Linux (GitHub Actions), we rely on the pre-installed version
-    // but we can still try to find it in common locations if needed.
-    console.log('🐧 Running on Linux, using system FFmpeg.');
+  } catch (err) {
+    console.warn('⚠️ FFmpeg/ffprobe static setup failed, relying on system PATH:', err.message);
   }
-} catch (setupError) {
-  console.error('❌ FFmpeg/FFprobe setup error:', setupError.message);
-}
+};
+
+// Initial setup call
+await setupFFmpeg();
 
 // Helper to get audio duration via ffprobe
 async function getAudioDuration(filePath) {
