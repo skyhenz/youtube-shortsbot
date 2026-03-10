@@ -188,10 +188,11 @@
   },
   {
     "date": "2026-03-10",
-    "videos_created": 2,
+    "videos_created": 3,
     "uploads_success": 0,
-    "uploads_failed": 2,
+    "uploads_failed": 3,
     "errors": [
+      "Authentication failed: invalid_grant. Your YOUTUBE_REFRESH_TOKEN has expired or been revoked. Steps to fix:\n  1. Run \"node setup_auth.js\" locally\n  2. Get the new refresh_token from config/token.json\n  3. Update YOUTUBE_REFRESH_TOKEN in GitHub Secrets\n  4. Make sure your Google app is in \"Production\" mode (not Testing)",
       "Authentication failed: invalid_grant. Your YOUTUBE_REFRESH_TOKEN has expired or been revoked. Steps to fix:\n  1. Run \"node setup_auth.js\" locally\n  2. Get the new refresh_token from config/token.json\n  3. Update YOUTUBE_REFRESH_TOKEN in GitHub Secrets\n  4. Make sure your Google app is in \"Production\" mode (not Testing)",
       "Authentication failed: invalid_grant. Your YOUTUBE_REFRESH_TOKEN has expired or been revoked. Steps to fix:\n  1. Run \"node setup_auth.js\" locally\n  2. Get the new refresh_token from config/token.json\n  3. Update YOUTUBE_REFRESH_TOKEN in GitHub Secrets\n  4. Make sure your Google app is in \"Production\" mode (not Testing)"
     ]
