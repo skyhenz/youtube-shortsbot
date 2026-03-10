@@ -1,4 +1,6 @@
 import ffmpeg from 'fluent-ffmpeg';
+import ffmpegStatic from 'ffmpeg-static';
+import ffprobeStatic from 'ffprobe-static';
 import path from 'path';
 import fs from 'fs/promises';
 import config from '../config/config.js';
@@ -6,17 +8,39 @@ import { logSelection } from './log_rotation.js';
 import { fetchRelevantImage, fetchRelevantVideo, cleanupTempImages } from './image_fetcher.js';
 
 // FFmpeg will use the system path (pre-installed in GitHub Actions)
+try {
+  if (process.platform !== 'linux') {
+    console.log('🔍 Setting up FFmpeg for Windows...');
+    try {
+      ffmpeg.setFfmpegPath(ffmpegStatic);
+      console.log('✅ FFmpeg static path set.');
+    } catch (e) {
+      console.warn('⚠️ Could not set FFmpeg static path, relying on system PATH.');
+    }
+
+    try {
+      ffmpeg.setFfprobePath(ffprobeStatic.path);
+      console.log('✅ FFprobe static path set.');
+    } catch (e) {
+      console.warn('⚠️ Could not set FFprobe static path, relying on system PATH.');
+    }
+  } else {
+    // On Linux (GitHub Actions), we rely on the pre-installed version
+    // but we can still try to find it in common locations if needed.
+    console.log('🐧 Running on Linux, using system FFmpeg.');
+  }
+} catch (setupError) {
+  console.error('❌ FFmpeg/FFprobe setup error:', setupError.message);
+}
 
 // Helper to get audio duration via ffprobe
 async function getAudioDuration(filePath) {
-  // Fix for GH Actions: ensure ffprobe is found
-  if (process.platform === 'linux') {
-    ffmpeg.setFfprobePath('/usr/bin/ffprobe');
-  }
-
   return new Promise((resolve, reject) => {
     ffmpeg.ffprobe(filePath, (err, metadata) => {
-      if (err) reject(err);
+      if (err) {
+        console.error(`❌ ffprobe failed for ${filePath}:`, err.message);
+        reject(new Error(`ffprobe failed: ${err.message}. Make sure FFmpeg/ffprobe is installed and in your PATH.`));
+      }
       else resolve(metadata.format.duration);
     });
   });
@@ -96,6 +120,7 @@ export default async function generateVideo(scriptData, audioFile) {
     }
     const assFile = path.join(config.paths.output, `subtitles_${timestamp}.ass`);
     await fs.writeFile(assFile, assContent);
+    scriptData.assFile = assFile; // Store for cleanup
     filterComplex.push(`[${vTag}]subtitles='${path.resolve(assFile).replace(/\\/g, '/').replace(/:/g, '\\:')}'[vsub]`);
     vTag = 'vsub';
   }
@@ -137,7 +162,7 @@ export default async function generateVideo(scriptData, audioFile) {
       .on('end', async () => {
         await logSelection(outputFile, scriptData.selectedCTA, scriptData.selectedDescriptionId, scriptData.selectedAffiliateId);
         await cleanupTempImages();
-        resolve(outputFile);
+        resolve({ videoFile: outputFile, assFile: scriptData.assFile });
       })
       .on('error', (err) => {
         console.error('❌ FFmpeg Error:', err.message);

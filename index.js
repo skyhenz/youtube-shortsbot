@@ -17,6 +17,12 @@ import {
 } from './scripts/validation.js';
 import generateAnalytics from './scripts/analytics.js';
 
+// --- FORCE DRIVE D ACTIVITY ---
+// Memaksa semua proses temp (FFmpeg, dll) ke Drive D
+process.env.TMP = path.join(process.cwd(), 'temp');
+process.env.TEMP = path.join(process.cwd(), 'temp');
+// ------------------------------
+
 async function updateBotStatus(status, details = {}) {
     const statusFile = path.join(config.paths.logs, 'bot_status.json');
     const statusData = {
@@ -28,7 +34,8 @@ async function updateBotStatus(status, details = {}) {
 }
 
 async function ensureDirectories() {
-    const dirs = [config.paths.output, config.paths.logs, config.paths.assets, config.paths.content];
+    const tempDir = path.join(process.cwd(), 'temp');
+    const dirs = [config.paths.output, config.paths.logs, config.paths.assets, config.paths.content, tempDir];
     for (const dir of dirs) {
         await fs.mkdir(dir, { recursive: true });
     }
@@ -174,7 +181,7 @@ async function main() {
                 const audioFile = await generateVoice(scriptData);
                 console.log('✅ Voice generated');
 
-                const videoFile = await generateVideo(scriptData, audioFile);
+                const { videoFile, assFile } = await generateVideo(scriptData, audioFile);
                 console.log('✅ Video generated');
 
                 await logHealthCheck('video_created');
@@ -209,8 +216,6 @@ async function main() {
                                 await updateQuota(1);
                                 await logHealthCheck('upload_success');
                                 await markAsProcessed(contentPackage);
-                                await cleanup(audioFile, videoFile);
-                                console.log('✅ Cleanup completed');
                             } catch (uploadError) {
                                 console.error(`⚠️ Upload failed: ${uploadError.message}`);
                                 const failLog = path.join(config.paths.logs, 'upload_failed.log');
@@ -229,6 +234,16 @@ async function main() {
                         }
                     }
                 }
+
+                // ALWAYS cleanup temp files (audio and ass)
+                // We keep videoFile if upload failed so it can be checked manually,
+                // but we clean it if upload success or in test mode
+                const filesToCleanup = [audioFile, assFile];
+                if (config.testMode || (config.upload.autoUpload && await isAlreadyUploaded(scriptData.topic))) {
+                    filesToCleanup.push(videoFile);
+                }
+                await cleanup(...filesToCleanup);
+                console.log('✅ Temporary files cleanup completed');
             }
 
             console.log('🎉 Cicilan bot selesai');
