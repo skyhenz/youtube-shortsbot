@@ -151,6 +151,26 @@ async function main() {
             }
 
             await ensureDirectories();
+            
+            // --- PRE-CHECK AUTH ---
+            if (!config.testMode && config.upload.autoUpload) {
+                try {
+                    console.log('🔍 Checking YouTube Authentication...');
+                    const auth = new AuthManager();
+                    await auth.getClient();
+                    console.log('✅ Authentication valid.');
+                } catch (authError) {
+                    console.error('❌ Authentication Pre-check failed:');
+                    console.error(authError.message);
+                    
+                    if (process.env.SINGLE_RUN === 'true') {
+                        process.exit(1);
+                    }
+                    
+                    // In long-running mode, wait for the next interval
+                    throw authError; 
+                }
+            }
 
             let contentPackage = specificFile ? path.resolve(specificFile) : await getNextContentPackage();
 

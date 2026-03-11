@@ -53,11 +53,25 @@ jobs:
         run: |
           git config --local user.email "bot@github-actions.com"
           git config --local user.name "YouTube Bot"
-          git add logs/ paket_konten/
+          
+          # Add all potential changes
+          git add logs/ paket_konten/ config/
+          
           if [ -n "$(git status --porcelain)" ]; then
             git commit -m "bot: update state [skip ci]"
-            git pull --rebase origin ${{ github.ref_name }}
-            git push origin HEAD:${{ github.ref_name }}
+            
+            # Retry push logic to handle race conditions
+            for i in {1..5}; do
+              echo "Attempting to push state (attempt $i)..."
+              if git pull --rebase origin ${{ github.ref_name }} && git push origin HEAD:${{ github.ref_name }}; then
+                echo "✅ State saved successfully"
+                exit 0
+              fi
+              echo "⚠️ Push failed, retrying in 5 seconds..."
+              sleep 5
+            done
+            echo "❌ Failed to save state after 5 attempts"
+            exit 1
           else
             echo "No changes to commit"
           fi
