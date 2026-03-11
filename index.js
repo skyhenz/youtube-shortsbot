@@ -16,6 +16,7 @@ import {
     logHealthCheck
 } from './scripts/validation.js';
 import generateAnalytics from './scripts/analytics.js';
+import AuthManager from './scripts/auth_manager.js';
 
 // --- FORCE DRIVE D ACTIVITY ---
 // Memaksa semua proses temp (FFmpeg, dll) ke Drive D
